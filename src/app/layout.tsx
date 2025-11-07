@@ -47,21 +47,22 @@ export default function RootLayout({
         <Navbar />
 
         {/* Main Content */}
+    
         <main
-            className="flex-1
-                     pt-[7rem] sm:pt-[7rem] md:pt-[7rem]
-
-                     px-4 sm:px-6 md:px-12
-                     w-full
-                     max-w-[2500px]
-                     mx-auto
-                     transition-all"
+            className="
+        flex-1
+        pt-[7rem] sm:pt-[7rem] md:pt-[7rem]
+        w-full
+        transition-all
+    "
         >
-            {/* Wrap the children in a container for better portfolio styling */}
-            <div className="flex flex-col gap-12 sm:gap-16 md:gap-20">
+            {/* Full-width container for portfolio content */}
+            <div className="flex flex-col gap-12 sm:gap-16 md:gap-20 w-full">
                 {children}
             </div>
         </main>
+
+
 
         {/* Footer */}
         <Footer />
