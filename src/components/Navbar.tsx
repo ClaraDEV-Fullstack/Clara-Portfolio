@@ -213,8 +213,6 @@ export default function Navbar() {
                 </motion.div>
             )}
 
-            {/* Small padding so content doesn't hide behind header */}
-            <div className="h-6 sm:h-8 md:h-10" aria-hidden />
         </>
     );
 }

@@ -6,19 +6,30 @@ import ScrollToTop from "@/components/ScrollToTop";
 
 export const metadata: Metadata = {
     title: "Clara Portfolio | Frontend Developer & UI Designer",
-    description: "Personal portfolio showcasing frontend development projects, skills, and services. Built with Next.js, TypeScript, and Tailwind CSS.",
-    keywords: ["frontend developer", "UI designer", "Next.js", "React", "TypeScript", "portfolio", "graphic designer"],
+    description:
+        "Personal portfolio showcasing frontend development projects, skills, and services. Built with Next.js, TypeScript, and Tailwind CSS.",
+    keywords: [
+        "frontend developer",
+        "UI designer",
+        "Next.js",
+        "React",
+        "TypeScript",
+        "portfolio",
+        "graphic designer",
+    ],
     authors: [{ name: "Clara" }],
     openGraph: {
         title: "Clara Portfolio | Frontend Developer & UI Designer",
-        description: "Personal portfolio showcasing frontend development projects, skills, and services.",
+        description:
+            "Personal portfolio showcasing frontend development projects, skills, and services.",
         type: "website",
         locale: "en_US",
     },
     twitter: {
         card: "summary_large_image",
         title: "Clara Portfolio | Frontend Developer & UI Designer",
-        description: "Personal portfolio showcasing frontend development projects, skills, and services.",
+        description:
+            "Personal portfolio showcasing frontend development projects, skills, and services.",
     },
     viewport: "width=device-width, initial-scale=1",
     robots: "index, follow",
@@ -31,13 +42,31 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-        <body className="min-h-screen flex flex-col bg-gray-50">
+        <body className="min-h-screen flex flex-col bg-gray-50 text-gray-800 font-sans">
+        {/* Navbar */}
         <Navbar />
-        <main className="flex-1 pt-16 pb-16 md:pt-16">
-            {children}
+
+        {/* Main Content */}
+        <main
+            className="flex-1
+                     pt-[7rem] sm:pt-[7rem] md:pt-[7rem]
+
+                     px-4 sm:px-6 md:px-12
+                     w-full
+                     max-w-[2500px]
+                     mx-auto
+                     transition-all"
+        >
+            {/* Wrap the children in a container for better portfolio styling */}
+            <div className="flex flex-col gap-12 sm:gap-16 md:gap-20">
+                {children}
+            </div>
         </main>
 
+        {/* Footer */}
         <Footer />
+
+        {/* Scroll To Top Button */}
         <ScrollToTop />
         </body>
         </html>
