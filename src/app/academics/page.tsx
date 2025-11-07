@@ -8,6 +8,28 @@ import Image from 'next/image';
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600', '700'] });
 const montserrat = Montserrat({ subsets: ['latin'], weight: ['600', '700', '800'] });
 
+// Define types for our data structures
+type CareerItem = {
+    year: string;
+    title: string;
+    subtitle: string;
+    description: string;
+    type: string;
+};
+
+type CareerData = {
+    academic: CareerItem[];
+    experience: CareerItem[];
+    training: CareerItem[];
+};
+
+type Section = {
+    id: keyof CareerData;
+    title: string;
+    icon: JSX.Element;
+    color: string;
+};
+
 export default function CareerPage() {
     const fadeUp = {
         hidden: { opacity: 0, y: 40 },
@@ -30,7 +52,7 @@ export default function CareerPage() {
     };
 
     // Grouped and sorted career data
-    const careerData = {
+    const careerData: CareerData = {
         academic: [
             {
                 year: '2022-2023',
@@ -65,7 +87,7 @@ export default function CareerPage() {
             {
                 year: '2021-2023',
                 title: 'Graphic Designer & Assistant Manager',
-                subtitle: 'Awabong Private Company',
+                subtitle: 'Awambong Private Company',
                 description: 'Oversaw design, production, procurement, and delivery while managing supply chain operations.',
                 type: 'experience'
             }
@@ -89,7 +111,7 @@ export default function CareerPage() {
     };
 
     // Section configuration
-    const sections = [
+    const sections: Section[] = [
         {
             id: 'academic',
             title: 'Academic Background',
@@ -213,7 +235,7 @@ export default function CareerPage() {
                         <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 md:p-8 shadow-2xl border border-gray-700">
 
                             {/* Render each section */}
-                            {sections.map((section) => (
+                            {sections.map((section: Section) => (
                                 <div key={section.id} className="mb-12">
                                     {/* Section Title */}
                                     <div className="flex items-center mb-8">
@@ -231,7 +253,7 @@ export default function CareerPage() {
                                         <div className={`absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b ${section.color}`}></div>
 
                                         <div className="space-y-12">
-                                            {careerData[section.id].map((item, index) => (
+                                            {careerData[section.id].map((item: CareerItem, index: number) => (
                                                 <motion.div
                                                     key={index}
                                                     initial="hidden"

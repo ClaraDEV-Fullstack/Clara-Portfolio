@@ -128,7 +128,7 @@ export default function ContactPage() {
                         className="text-center md:text-left space-y-4"
                     >
                         <h3 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-yellow-400 via-orange-300 to-pink-400 bg-clip-text text-transparent drop-shadow-lg">
-                            Let’s Connect 🤝
+                            Let's Connect 🤝
                         </h3>
 
                         <motion.div
@@ -139,8 +139,8 @@ export default function ContactPage() {
                         ></motion.div>
 
                         <p className="text-gray-200 text-lg leading-relaxed max-w-lg">
-                            I’m available for <span className="text-yellow-400 font-semibold">freelance work</span>, full-time roles, or even a friendly chat.
-                            Drop a message below or connect via my socials — let’s bring your next idea to life!
+                            I'm available for <span className="text-yellow-400 font-semibold">freelance work</span>, full-time roles, or even a friendly chat.
+                            Drop a message below or connect via my socials — let's bring your next idea to life!
                         </p>
                     </motion.div>
 
@@ -237,7 +237,7 @@ export default function ContactPage() {
                             className="absolute -top-12 left-1/2 -translate-x-1/2 bg-gradient-to-r from-green-500 to-emerald-500 text-white p-4 rounded-full text-xl font-bold shadow-lg z-10"
                             initial={{ scale: 0 }}
                             animate={{ scale: 1.2, rotate: 15 }}
-                            transition={{ duration: 0.5, yoyo: 2 }}
+                            transition={{ duration: 0.5, repeat: 1, repeatType: "reverse" }}
                         >
                             <FaCheckCircle className="inline-block mr-2" />
                             Message Sent!

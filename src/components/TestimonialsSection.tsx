@@ -149,8 +149,8 @@ export default function TestimonialsPage() {
     return (
         <section className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 p-2 md:p-8 relative overflow-hidden">
             {/* Background decoration */}
-            <div className="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-gradient-to-br from-blue-600/10 to-transparent rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 md:w-96 md:h-96 bg-gradient-to-tr from-blue-600/10 to-transparent rounded-full blur-3xl"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-600/10 to-transparent rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-blue-600/10 to-transparent rounded-full blur-3xl"></div>
 
             {/* Header */}
             <div className="text-center mb-6 md:mb-12 relative z-10">
@@ -168,31 +168,16 @@ export default function TestimonialsPage() {
                 </p>
             </div>
 
-            {/* Add Testimonial Button */}
-            <div className="text-center mb-6 md:mb-10 relative z-10">
-                <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => {
-                        resetForm();
-                        setShowModal(true);
-                    }}
-                    className="px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-blue-600 to-yellow-700 text-white font-semibold rounded-lg shadow-lg flex items-center justify-center mx-auto gap-2 text-sm md:text-base"
-                >
-                    <FaPlus /> Add Testimonial
-                </motion.button>
-            </div>
-
             {/* Infinite Carousel */}
             <div className="relative overflow-hidden py-4 md:py-8 relative z-10">
                 <div
-                    className="carousel-track gap-4 md:gap-6"
+                    className="carousel-track gap-4 md:gap-8"
                     ref={carouselRef}
                 >
                     {displayedTestimonials.map((t, idx) => (
                         <div
                             key={idx}
-                            className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl shadow-lg border border-gray-700 flex-shrink-0 w-[80%] md:w-[18%] p-3 md:p-4 flex flex-col cursor-pointer hover:shadow-xl transition-all duration-300 hover:border-yellow-600/30 h-72 md:h-96"
+                            className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl shadow-lg border border-gray-700 flex-shrink-0 w-[70%] md:w-[20%] p-3 md:p-5 flex flex-col cursor-pointer hover:shadow-xl transition-all duration-300 hover:border-yellow-600/30 h-72 md:h-96"
                             onClick={() => handleCardClick(t)}
                         >
                             {/* Header with rating */}
@@ -346,7 +331,7 @@ export default function TestimonialsPage() {
                                     <label className="block text-sm font-medium text-gray-300 mb-1">
                                         Testimonial Screenshot *
                                     </label>
-                                    <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+                                    <div className="flex items-center gap-4">
                                         <label className="flex flex-col items-center justify-center w-24 h-24 md:w-32 md:h-32 border-2 border-dashed border-gray-500 rounded-lg cursor-pointer bg-gray-700/30 hover:bg-gray-600/50 transition-colors">
                                             {imagePreview ? (
                                                 <NextImage
@@ -370,7 +355,7 @@ export default function TestimonialsPage() {
                                                 disabled={loading}
                                             />
                                         </label>
-                                        <div className="mt-2 md:mt-0">
+                                        <div>
                                             {loading ? (
                                                 <div className="flex items-center text-yellow-600 text-sm">
                                                     <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-yellow-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
