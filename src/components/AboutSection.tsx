@@ -113,7 +113,8 @@ export default function AboutSection() {
                         className="relative flex items-center justify-center"
                     >
                         {/* Outer Card */}
-                        <div className="relative h-[70vh] md:h-[85vh] w-full max-w-2xl mx-auto rounded-2xl overflow-hidden shadow-2xl border-2 border-gray-700">
+                        <div className="relative w-full max-w-2xl mx-auto rounded-2xl overflow-hidden shadow-2xl border-2 border-gray-700
+                    h-[60vh] sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-[90vh]">
                             {/* Image Area */}
                             <div className="relative w-full h-full bg-gradient-to-br from-blue-900/10 to-purple-900/10 flex items-center justify-center">
                                 {/* Professional Image */}
@@ -134,6 +135,7 @@ export default function AboutSection() {
                             <div className="absolute -top-4 md:-top-6 -left-4 md:-left-6 w-12 md:w-16 h-12 md:h-16 bg-gradient-to-br from-yellow-500/20 to-yellow-800/20 rounded-full blur-xl"></div>
                         </div>
                     </motion.div>
+
 
                     {/* Right Column - Content */}
                     <motion.div
