@@ -37,7 +37,7 @@ export const metadata: Metadata = {
         locale: "en_US",
         images: [
             {
-                url: "https://claradev.vercel.app/images/profile.jpg",
+                url: "https://claradev.vercel.app/images/layout.jpg",
                 width: 1200,
                 height: 630,
                 alt: "Clara Beri Portfolio Preview",
