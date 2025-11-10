@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, Variants } from 'framer-motion'; // Added Variants import
+import { motion, Variants } from 'framer-motion';
 import { Poppins, Montserrat } from 'next/font/google';
 import { FaGraduationCap, FaBriefcase, FaAward, FaCertificate, FaLightbulb, FaUsers, FaChartLine, FaCalendarAlt } from 'react-icons/fa';
 import Image from 'next/image';
@@ -32,30 +32,30 @@ type Section = {
 };
 
 export default function CareerPage() {
-    const fadeUp: Variants = { // Added type annotation
+    const fadeUp: Variants = {
         hidden: { opacity: 0, y: 40 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
     };
 
-    const fadeIn: Variants = { // Added type annotation
+    const fadeIn: Variants = {
         hidden: { opacity: 0 },
         visible: { opacity: 1, transition: { duration: 1 } },
     };
 
-    const slideInLeft: Variants = { // Added type annotation
+    const slideInLeft: Variants = {
         hidden: { opacity: 0, x: -100 },
         visible: { opacity: 1, x: 0, transition: { duration: 1 } },
     };
 
-    const slideInRight: Variants = { // Added type annotation
+    const slideInRight: Variants = {
         hidden: { opacity: 0, x: 100 },
         visible: { opacity: 1, x: 0, transition: { duration: 1 } },
     };
 
     // Enhanced animation variants for timeline items
-    const timelineItemVariants: Variants = { // Added type annotation
+    const timelineItemVariants: Variants = {
         hidden: { opacity: 0, x: -50 },
-        visible: (index: number) => ({ // Fixed function signature
+        visible: (index: number) => ({
             opacity: 1,
             x: 0,
             transition: {
@@ -67,7 +67,7 @@ export default function CareerPage() {
     };
 
     // Enhanced animation for section headers
-    const sectionHeaderVariants: Variants = { // Added type annotation
+    const sectionHeaderVariants: Variants = {
         hidden: { opacity: 0, y: -20 },
         visible: {
             opacity: 1,
@@ -80,7 +80,7 @@ export default function CareerPage() {
     };
 
     // Animation for text elements
-    const textVariants: Variants = { // Added type annotation
+    const textVariants: Variants = {
         hidden: { opacity: 0, y: 20 },
         visible: {
             opacity: 1,
@@ -188,10 +188,10 @@ export default function CareerPage() {
     ];
 
     return (
-        <section className={`${poppins.className} bg-gradient-to-br from-gray-900 to-black min-h-screen text-white py-10 px-4 md:px-6 relative overflow-hidden`}>
+        <section className={`${poppins.className} bg-gradient-to-br from-gray-900 to-black min-h-screen text-white py-6 px-3 md:py-10 md:px-6 relative overflow-hidden`}>
             {/* Background decoration */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-yellow-600/10 to-transparent rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-yellow-600/10 to-transparent rounded-full blur-3xl"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-gradient-to-br from-yellow-600/10 to-transparent rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 md:w-96 md:h-96 bg-gradient-to-tr from-yellow-600/10 to-transparent rounded-full blur-3xl"></div>
 
             {/* Header */}
             <motion.div
@@ -199,27 +199,27 @@ export default function CareerPage() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeIn}
-                className="text-center mb-12 relative z-10"
+                className="text-center mb-8 md:mb-12 relative z-10"
             >
                 <motion.div
-                    className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-r from-yellow-600 to-yellow-800 mb-6 shadow-lg"
+                    className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-r from-yellow-600 to-yellow-800 mb-4 md:mb-6 shadow-lg"
                     variants={textVariants}
                 >
-                    <FaGraduationCap className="text-white text-3xl" />
+                    <FaGraduationCap className="text-white text-2xl md:text-3xl" />
                 </motion.div>
 
                 <motion.h1
-                    className={`${montserrat.className} text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent`}
+                    className={`${montserrat.className} text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent`}
                     variants={textVariants}
                 >
                     Career Journey
                 </motion.h1>
-                <motion.p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto font-medium" variants={textVariants}>
+                <motion.p className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto font-medium px-2" variants={textVariants}>
                     My path through education, professional experience, and continuous skill development
                 </motion.p>
             </motion.div>
 
-            <div className="w-[95%] mx-auto">
+            <div className="w-[98%] md:w-[95%] mx-auto">
                 {/* Main Content - Full Width Layout */}
                 <div className="flex flex-col lg:flex-row gap-6 md:gap-8 items-start">
                     {/* Left Column - Image and Quote (30% width) */}
@@ -231,7 +231,7 @@ export default function CareerPage() {
                         className="lg:w-[30%] flex flex-col items-center"
                     >
                         {/* Curved Image Container */}
-                        <div className="relative w-full mb-8">
+                        <div className="relative w-full mb-6 md:mb-8">
                             <div className="relative overflow-hidden rounded-[50%_50%_0%_0%] w-full aspect-[3/4]">
                                 <Image
                                     src="/images/aboutpic.jpg"
@@ -239,7 +239,7 @@ export default function CareerPage() {
                                     fill
                                     className="object-cover w-full h-full scale-110 transition-transform duration-700 ease-in-out"
                                     style={{
-                                        objectPosition: "center top", // Keeps your head fully visible
+                                        objectPosition: "center top",
                                     }}
                                     priority
                                 />
@@ -249,12 +249,12 @@ export default function CareerPage() {
                             </div>
 
                             {/* Decorative elements */}
-                            <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-gradient-to-br from-yellow-600/30 to-yellow-800/30 rounded-full blur-xl"></div>
-                            <div className="absolute -top-4 -left-4 w-16 h-16 bg-gradient-to-br from-yellow-600/30 to-yellow-800/30 rounded-full blur-xl"></div>
+                            <div className="absolute -bottom-4 -right-4 w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-yellow-600/30 to-yellow-800/30 rounded-full blur-xl"></div>
+                            <div className="absolute -top-4 -left-4 w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-yellow-600/30 to-yellow-800/30 rounded-full blur-xl"></div>
 
                             {/* Floating badges */}
                             <motion.div
-                                className="absolute top-6 right-6 bg-gradient-to-r from-yellow-600 to-yellow-800 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg"
+                                className="absolute top-4 right-4 md:top-6 md:right-6 bg-gradient-to-r from-yellow-600 to-yellow-800 text-white px-3 py-1 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold shadow-lg"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.5 }}
@@ -263,7 +263,7 @@ export default function CareerPage() {
                             </motion.div>
 
                             <motion.div
-                                className="absolute bottom-6 left-6 bg-gradient-to-r from-yellow-600 to-yellow-800 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg"
+                                className="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-gradient-to-r from-yellow-600 to-yellow-800 text-white px-3 py-1 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold shadow-lg"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.7 }}
@@ -281,8 +281,8 @@ export default function CareerPage() {
                             transition={{ duration: 0.8 }}
                             className="w-full"
                         >
-                            <div className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl p-6 border border-gray-700">
-                                <p className="text-lg md:text-xl text-gray-300 font-medium italic text-center">
+                            <div className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl p-4 md:p-6 border border-gray-700">
+                                <p className="text-base md:text-lg lg:text-xl text-gray-300 font-medium italic text-center">
                                     "Education built my foundation; experience shaped my creativity and resilience.
                                     Together, they form the cornerstone of my professional journey."
                                 </p>
@@ -298,13 +298,13 @@ export default function CareerPage() {
                         variants={slideInRight}
                         className="lg:w-[70%]"
                     >
-                        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 md:p-8 shadow-2xl border border-gray-700">
+                        <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-4 md:p-6 lg:p-8 shadow-2xl border border-gray-700">
 
                             {/* Render each section */}
                             {sections.map((section: Section, sectionIndex: number) => (
                                 <motion.div
                                     key={section.id}
-                                    className="mb-12"
+                                    className="mb-8 md:mb-12"
                                     variants={sectionHeaderVariants}
                                     initial="hidden"
                                     whileInView="visible"
@@ -312,15 +312,15 @@ export default function CareerPage() {
                                     transition={{ delay: sectionIndex * 0.2 }}
                                 >
                                     {/* Section Title */}
-                                    <div className="flex items-center mb-8">
+                                    <div className="flex items-center mb-6 md:mb-8">
                                         <motion.div
-                                            className={`w-12 h-12 rounded-full bg-gradient-to-r ${section.color} flex items-center justify-center mr-6 animate__animated animate__pulse animate__infinite animate__slower`}
+                                            className={`w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r ${section.color} flex items-center justify-center mr-4 md:mr-6 animate__animated animate__pulse animate__infinite animate__slower`}
                                             whileHover={{ scale: 1.1 }}
                                             whileTap={{ scale: 0.95 }}
                                         >
                                             {section.icon}
                                         </motion.div>
-                                        <h2 className={`${montserrat.className} text-3xl font-bold text-white`}>
+                                        <h2 className={`${montserrat.className} text-2xl md:text-3xl font-bold text-white`}>
                                             {section.title}
                                         </h2>
                                     </div>
@@ -328,9 +328,9 @@ export default function CareerPage() {
                                     {/* Timeline */}
                                     <div className="relative">
                                         {/* Vertical line */}
-                                        <div className={`absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b ${section.color}`}></div>
+                                        <div className={`absolute left-6 md:left-8 top-0 bottom-0 w-1 bg-gradient-to-b ${section.color}`}></div>
 
-                                        <div className="space-y-12">
+                                        <div className="space-y-8 md:space-y-12">
                                             {careerData[section.id].map((item: CareerItem, index: number) => (
                                                 <motion.div
                                                     key={index}
@@ -339,11 +339,11 @@ export default function CareerPage() {
                                                     whileInView="visible"
                                                     viewport={{ once: true }}
                                                     variants={timelineItemVariants}
-                                                    className="relative pl-24" // Increased padding to create more space
+                                                    className="relative pl-20 md:pl-24"
                                                 >
                                                     {/* Timeline dot */}
                                                     <motion.div
-                                                        className={`absolute left-8 top-6 w-6 h-6 rounded-full bg-gradient-to-br ${section.color} shadow-lg z-10 flex items-center justify-center animate__animated animate__bounceIn`}
+                                                        className={`absolute left-6 md:left-8 top-6 w-5 h-5 md:w-6 md:h-6 rounded-full bg-gradient-to-br ${section.color} shadow-lg z-10 flex items-center justify-center animate__animated animate__bounceIn`}
                                                         style={{ animationDelay: `${index * 0.1 + 0.2}s` }}
                                                     >
                                                         {item.type === 'academic' && <FaAward className="text-white text-xs" />}
@@ -351,26 +351,26 @@ export default function CareerPage() {
                                                         {item.type === 'training' && <FaCertificate className="text-white text-xs" />}
                                                     </motion.div>
 
-                                                    {/* Year badge - Added z-index and padding to prevent overshadowing */}
+                                                    {/* Year badge */}
                                                     <motion.div
-                                                        className="absolute left-0 top-4 bg-gradient-to-r from-yellow-600 to-yellow-800 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg z-20 animate__animated animate__fadeInLeft"
+                                                        className="absolute left-0 top-4 bg-gradient-to-r from-yellow-600 to-yellow-800 text-white px-3 py-1 md:px-4 md:py-1 rounded-full text-xs md:text-sm font-bold shadow-lg z-20 animate__animated animate__fadeInLeft"
                                                         style={{ animationDelay: `${index * 0.1 + 0.3}s` }}
                                                     >
                                                         {item.year}
                                                     </motion.div>
 
-                                                    {/* Content - Cream white background with adjusted text colors */}
+                                                    {/* Content */}
                                                     <motion.div
-                                                        className="bg-amber-50 rounded-xl p-6 border border-amber-200 mt-4 animate__animated animate__fadeInUp"
+                                                        className="bg-amber-50 rounded-xl p-4 md:p-6 border border-amber-200 mt-4 animate__animated animate__fadeInUp"
                                                         style={{ animationDelay: `${index * 0.1 + 0.4}s` }}
                                                     >
-                                                        <h3 className={`${montserrat.className} text-2xl font-bold text-gray-900 mb-2`}>
+                                                        <h3 className={`${montserrat.className} text-xl md:text-2xl font-bold text-gray-900 mb-2`}>
                                                             {item.title}
                                                         </h3>
-                                                        <p className="text-amber-700 font-semibold text-lg mb-3">
+                                                        <p className="text-amber-700 font-semibold text-base md:text-lg mb-3">
                                                             {item.subtitle}
                                                         </p>
-                                                        <p className="text-gray-700 text-lg leading-relaxed">
+                                                        <p className="text-gray-700 text-base md:text-lg leading-relaxed">
                                                             {item.description}
                                                         </p>
                                                     </motion.div>
