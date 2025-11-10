@@ -70,7 +70,7 @@ export default function CreativeServicesSection() {
                 </motion.div>
 
                 {/* Creative Services Display */}
-                <div className="relative min-h-[300px] sm:min-h-[400px] flex items-center justify-center mt-2"> 
+                <div className="relative min-h-[300px] sm:min-h-[400px] flex items-center justify-center mt-2">
                     {/* Central circle with exchange functionality */}
                     <motion.div
                         className="hidden sm:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 sm:w-64 sm:h-64 rounded-full border-2 border-blue-200 flex items-center justify-center backdrop-blur-sm bg-white/80 shadow-lg"

@@ -186,7 +186,7 @@ Adjust individual component styles as needed.
 This portfolio is deployed on Vercel.
 
 Live Demo:
-🔗 https://claraberi.vercel.app
+🔗 https://claradev.vercel.app/
 
 Deployment Steps
 git add .
@@ -217,7 +217,7 @@ Clara Beri
 
 💻 GitHub: github.com/ClaraDEV-Fullstack
 
-🌍 Portfolio: https://claraberi.vercel.app
+🌍 Portfolio: https://claradev.vercel.app/
 
 Built with ❤️ using Next.js and Tailwind CSS.
 

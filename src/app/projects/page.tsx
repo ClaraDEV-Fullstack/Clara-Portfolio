@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import SectionTitle from "../../components/SectionTitle";
 import { Card, CardContent } from "../../components/ui/card";
 import { motion } from "framer-motion";
+import 'animate.css';
 
 // Dynamic imports for icons to reduce bundle size
 const FaGithub = dynamic(() => import("react-icons/fa").then(mod => mod.FaGithub));
@@ -88,7 +89,6 @@ const projects: Project[] = [
     }
 ];
 
-
 // Map technology names to icons
 const getTechIcon = (tech: string) => {
     const iconMap: Record<string, JSX.Element> = {
@@ -132,6 +132,25 @@ export default function ProjectsPage() {
         ? projects
         : projects.filter(project => project.status === filter || (filter === "featured" && project.featured));
 
+    // Helper function to get animation class based on index
+    const getAnimationClass = (index: number) => {
+        const animations = [
+            'animate__fadeInLeft',
+            'animate__fadeInRight',
+            'animate__fadeInUp',
+            'animate__fadeInDown',
+            'animate__zoomIn',
+            'animate__bounceIn',
+            'animate__rotateIn',
+            'animate__lightSpeedInRight',
+            'animate__slideInLeft',
+            'animate__slideInRight',
+            'animate__slideInUp',
+            'animate__slideInDown'
+        ];
+        return animations[index % animations.length];
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white py-20 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
@@ -160,15 +179,19 @@ export default function ProjectsPage() {
                         </div>
 
                         {/* Section Description - First Part */}
-                        <div className="mt-5 text-base sm:text-lg md:text-xl text-blue-100/90 max-w-xl mx-auto leading-relaxed">
-                            Explore my recent work — intelligent, full-stack applications blending
-                            <span className="font-semibold text-cyan-300"> AI</span>, creativity, and robust development.
+                        <div className="mt-5 text-base sm:text-lg md:text-xl text-blue-100/90 max-w-full px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 mx-auto leading-relaxed">
+                            <div className="max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto">
+                                Explore my recent work — intelligent, full-stack applications blending
+                                <span className="font-semibold text-cyan-300"> AI</span>, creativity<br/> and robust development.
+                            </div>
                         </div>
 
                         {/* Section Description - Second Part */}
-                        <div className="mt-3 text-base sm:text-lg md:text-xl text-blue-100/90 max-w-3xl mx-auto leading-relaxed">
-                            Each project showcases innovation, scalability, and real-world problem-solving.
-                            Hover over a project to reveal its core technologies and live demo.
+                        <div className="mt-4 text-base sm:text-lg md:text-xl text-blue-100/90 max-w-full px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 mx-auto leading-relaxed">
+                            <div className="max-w-lg sm:max-w-md md:max-w-3xl lg:max-w-5xl mx-auto">
+                                Each project showcases innovation, scalability, and real-world problem-solving.
+                                Hover over a project to reveal its core technologies and live demo.
+                            </div>
                         </div>
 
                         {/* Decorative underline */}
@@ -204,17 +227,21 @@ export default function ProjectsPage() {
                             viewport={{once: true}}
                             transition={{duration: 0.5, delay: index * 0.1}}
                             whileHover={{y: -5}}
-                            className="group"
+                            className={`group animate__animated ${getAnimationClass(index)}`}
+                            style={{ animationDelay: `${index * 0.2}s` }}
                         >
                             <Card
-                                className="overflow-hidden bg-white border-gray-200 h-full flex flex-col shadow-md transition-all duration-300 group-hover:shadow-xl group-hover:shadow-blue-500/20 max-w-sm mx-auto">
+                                className="overflow-hidden bg-white border-gray-200 h-full flex flex-col shadow-md transition-all duration-300 group-hover:shadow-xl group-hover:shadow-blue-500/20 max-w-sm mx-auto"
+                            >
                                 {/* Image Section */}
                                 <div className="relative h-48 overflow-hidden">
                                     <div
-                                        className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-10"></div>
+                                        className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-10"
+                                    ></div>
                                     <div className="absolute top-4 right-4 z-20">
                                         <span
-                                            className={`px-3 py-1 rounded-full text-xs font-semibold ${statusColors[project.status]}`}>
+                                            className={`px-3 py-1 rounded-full text-xs font-semibold ${statusColors[project.status]}`}
+                                        >
                                             {project.status}
                                         </span>
                                     </div>
@@ -231,12 +258,11 @@ export default function ProjectsPage() {
                                 <CardContent className="p-5 flex-1 flex flex-col space-y-3">
                                     <div className="flex justify-between items-start mb-1">
                                         <h3 className="text-xl font-bold text-black">{project.title}</h3>
-                                        {project.featured &&
-                                            <span
-                                                className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm px-3 py-1 rounded-full">
+                                        {project.featured && (
+                                            <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm px-3 py-1 rounded-full">
                                                 Featured
                                             </span>
-                                        }
+                                        )}
                                     </div>
 
                                     {/* Description with line clamp */}
@@ -249,8 +275,10 @@ export default function ProjectsPage() {
                                         <h4 className="text-sm font-semibold text-black mb-2">Technologies:</h4>
                                         <div className="flex flex-wrap gap-2">
                                             {project.technologies.map((tech, i) => (
-                                                <div key={i}
-                                                     className="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded-md border border-gray-300 hover:bg-gray-200 transition">
+                                                <div
+                                                    key={i}
+                                                    className="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded-md border border-gray-300 hover:bg-gray-200 transition"
+                                                >
                                                     <span className="text-sm">{getTechIcon(tech)}</span>
                                                     <span className="text-xs font-medium text-black">{tech}</span>
                                                 </div>
@@ -282,8 +310,6 @@ export default function ProjectsPage() {
                                             <span>GitHub</span>
                                         </motion.a>
                                     </div>
-
-
                                 </CardContent>
                             </Card>
                         </motion.div>

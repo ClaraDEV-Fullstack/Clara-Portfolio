@@ -352,7 +352,7 @@ export default function TestimonialsPage() {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3">
                                     <div>
                                         <label className="block text-xs font-medium text-gray-300 mb-1">
-                                            Client Name *
+                                            Your Name *
                                         </label>
                                         <input
                                             type="text"
@@ -399,7 +399,7 @@ export default function TestimonialsPage() {
                                     <textarea
                                         value={formData.description}
                                         onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                                        placeholder="What did the client say about your work?"
+                                        placeholder="What do you have to say about my work?"
                                         className="w-full px-2 md:px-3 py-1.5 md:py-2 rounded-lg bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 min-h-[60px] md:min-h-[80px] focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent resize-none text-xs"
                                     ></textarea>
                                 </div>

@@ -31,13 +31,13 @@ export const metadata: Metadata = {
         title: "Clara Beri | AI Full-Stack Web & Mobile Developer | Graphic Designer",
         description:
             "Explore Clara Beri’s portfolio — showcasing creative design, AI-powered applications, and full-stack web and mobile development with modern technologies.",
-        url: "https://clara-portfolio-jet.vercel.app",
+        url: "https://claradev.vercel.app/",
         siteName: "Clara Beri Portfolio",
         type: "website",
         locale: "en_US",
         images: [
             {
-                url: "https://clara-portfolio-jet.vercel.app/images/profile.jpg",
+                url: "https://claradev.vercel.app/images/profile.jpg",
                 width: 1200,
                 height: 630,
                 alt: "Clara Beri Portfolio Preview",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
         title: "Clara Beri | AI Full-Stack Developer & Graphic Designer",
         description:
             "A showcase of creative AI-powered web and mobile experiences designed and developed by Clara Beri.",
-        images: ["https://clara-portfolio-jet.vercel.app/images/profile.jpg"],
+        images: ["https://claradev.vercel.app/images/profile.jpg"],
     },
     viewport: "width=device-width, initial-scale=1",
     robots: "index, follow",

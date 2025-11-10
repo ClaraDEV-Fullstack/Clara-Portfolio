@@ -112,7 +112,7 @@ export default function HeartCTA() {
 
                     <motion.p
                         className="text-xs sm:text-sm md:text-base lg:text-lg font-medium max-w-[90%] mx-auto leading-relaxed drop-shadow-md mb-4 sm:mb-6 md:mb-8 text-white/90"
-                        style={{ fontFamily: "'Dancing Script', cursive" }}
+                        style={{ fontFamily: "'Poppins', sans-serif" }}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4, duration: 0.5 }}
@@ -120,6 +120,7 @@ export default function HeartCTA() {
                         I'm always excited to hear about new projects and opportunities. Whether you
                         have a question or just want to say hi, feel free to reach out!
                     </motion.p>
+
 
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
