@@ -98,6 +98,18 @@ export const projects: Project[] = [
         isPrivate: true,
         caseStudyAnchor: "vyralo-koryxtech",
     },
+    {
+        id: 7,
+        title: "Developer Portfolio — Clara Beri",
+        description:
+            "Professional portfolio built with Next.js, TypeScript, and Framer Motion. Responsive layout, animated sections, private-project case studies with screenshot galleries, and continuous deployment on Vercel.",
+        technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+        image: "/images/portfolio-website.jpg",
+        demoUrl: "https://claradev.vercel.app",
+        githubUrl: "https://github.com/ClaraDEV-Fullstack/Clara-Portfolio",
+        status: "Completed",
+        featured: true,
+    },
 ];
 
 export const betBotDesktopScreenshots: ScreenshotGroup[] = [
@@ -126,6 +138,12 @@ export const vyraloApiScreenshots: ScreenshotGroup[] = [
     { src: "/images/vyralo/desktop-13-api-overview.png", label: "Laravel backend — SMM supplier API & admin sync" },
     { src: "/images/vyralo/desktop-14-api-endpoints.png", label: "Payments, webhooks, cron jobs & order automation" },
 ];
+
+/** Completed projects for the home page “My Works” section (optional limit). */
+export const getFeaturedCompletedProjects = (limit?: number): Project[] => {
+    const completed = projects.filter((project) => project.status === "Completed");
+    return limit ? completed.slice(0, limit) : completed;
+};
 
 export const vyraloDesktopScreenshots: ScreenshotGroup[] = [
     { src: "/images/vyralo/desktop-01-home.png", label: "Landing page" },
