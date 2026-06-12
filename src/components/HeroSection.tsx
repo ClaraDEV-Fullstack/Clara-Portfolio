@@ -66,26 +66,24 @@ export default function HeroSection() {
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.7 }}
-                        className="w-full md:w-2/5"
+                        className="w-full md:w-2/5 flex justify-center md:justify-start"
                     >
-                        <div className="relative">
+                        <div className="relative w-full max-w-[300px] sm:max-w-[340px] md:max-w-none">
                             {/* Magical glow effect */}
                             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur-xl transform scale-110"></div>
-                            {/* Image container with better aspect ratio */}
-                            <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl border-2 border-white/10">
+                            {/* Portrait frame — 3:4 ratio, capped height for consistent fit */}
+                            <div className="relative w-full aspect-[3/4] max-h-[380px] sm:max-h-[420px] md:max-h-[500px] lg:max-h-[540px] rounded-2xl overflow-hidden shadow-2xl border-2 border-white/10 bg-gray-900">
                                 <Image
-                                    src="/images/profile2.jpg"
-                                    alt="Clara Beri"
+                                    src="/images/hero-clara.png"
+                                    alt="Clara Beri — Full-Stack Developer"
                                     fill
-                                    className="object-cover"
-                                    style={{
-                                        transform: 'scaleX(-1) translateX(-5%)', // flip & slightly shift left to fill empty space
-                                        objectPosition: 'top center' // anchor to top so head is visible, crop from bottom
-                                    }}
+                                    priority
+                                    sizes="(max-width: 768px) 300px, (max-width: 1200px) 40vw, 420px"
+                                    className="object-cover object-[50%_15%]"
                                 />
 
-                                {/* Gradient overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                                {/* Subtle bottom gradient for depth */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent pointer-events-none"></div>
 
                                 {/* Magical floating elements */}
                                 <div className="absolute -top-4 md:-top-6 -right-4 md:-right-6 w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-yellow-400/30 to-yellow-600/30 rounded-full blur-xl animate-bounce"></div>
