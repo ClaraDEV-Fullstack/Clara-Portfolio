@@ -35,6 +35,7 @@ const getTechIcon = (tech: string) => {
         "Python": <FaPython className="text-yellow-400" />,
         "MySQL": <SiMysql className="text-blue-400" />,
         "PostgreSQL": <FaDatabase className="text-blue-600" />,
+        "Redux": <FaCode className="text-purple-400" />,
         "REST APIs": <FaCode className="text-blue-400" />,
         "Docker": <SiDocker className="text-blue-500" />,
         "Flutter": <FaCode className="text-blue-400" />,

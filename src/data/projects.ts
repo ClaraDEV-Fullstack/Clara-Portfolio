@@ -22,13 +22,13 @@ export interface ScreenshotGroup {
 export const projects: Project[] = [
     {
         id: 1,
-        title: "NextShopSphere E-Commerce",
+        title: "NexShop E-Commerce",
         description:
-            "A production-ready full-stack e-commerce platform with real-world architecture. Features secure authentication, role-based access, product management, and an integrated admin dashboard. Dockerized for consistent deployment.",
-        technologies: ["Next.js", "Django", "MySQL", "Docker", "REST APIs"],
-        image: "/images/landingpage.png",
-        demoUrl: "https://nextshopsphere-ui.onrender.com/",
-        githubUrl: "https://github.com/ClaraDEV-Fullstack/NextShopSphere",
+            "Full-stack e-commerce platform for the Cameroon market (FCFA). React + Django REST API with JWT & Google OAuth, mobile money checkout (Orange Money / MTN MoMo), cart, wishlist, reviews, order tracking, and Brevo email notifications. Deployed on Render with Supabase media CDN.",
+        technologies: ["React", "Django", "PostgreSQL", "Redux", "Docker", "Tailwind CSS"],
+        image: "/images/nexshop.png",
+        demoUrl: "https://nextshop-ui.onrender.com/",
+        githubUrl: "https://github.com/ClaraDEV-Fullstack/NexShop",
         status: "Completed",
         featured: true,
     },

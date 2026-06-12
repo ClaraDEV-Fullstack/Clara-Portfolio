@@ -335,8 +335,8 @@ export default function ProjectsPage() {
                             transition={{duration: 0.7}}>
                     <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">More Projects Coming Soon</h3>
                     <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto mb-6 md:mb-8 px-4">
-                        I'm currently working on several exciting projects including the Future Expense Tracker and
-                        React Django Full-Stack App. Stay tuned!
+                        I'm currently working on several exciting projects including NextSkill-Hub and new AI-powered tools.
+                        Stay tuned!
                     </p>
                     <div
                         className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full font-medium text-sm md:text-base">
