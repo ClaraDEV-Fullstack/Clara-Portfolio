@@ -75,9 +75,10 @@ Clara-Portfolio/
 AI sports betting assistant for **BetPawa Cameroon** — Next.js, FastAPI, Playwright, DeepSeek + Gemini.
 
 - **Live:** [bets.koryx.net](https://bets.koryx.net/)
-- **Repo:** [github.com/godofmarket/Bet_Bot_Pro](https://github.com/godofmarket/Bet_Bot_Pro)
 - **Features:** AI predictions, Kelly bankroll, coupon generator, auto-bet automation
 - **Case study:** [/projects#bet-bot-pro](https://claradev.vercel.app/projects#bet-bot-pro)
+
+> Source code is private (KoryxTech client project). Portfolio hosts screenshots and live demo link only.
 
 ---
 

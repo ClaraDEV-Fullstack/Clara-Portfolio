@@ -28,9 +28,10 @@ export const projects: Project[] = [
         technologies: ["Next.js", "TypeScript", "FastAPI", "Playwright", "Redis", "PostgreSQL", "Docker"],
         image: "/images/bet-bot-pro/desktop-01-home.png",
         demoUrl: "https://bets.koryx.net/",
-        githubUrl: "https://github.com/godofmarket/Bet_Bot_Pro",
+        githubUrl: "",
         status: "Completed",
         featured: true,
+        isPrivate: true,
         caseStudyAnchor: "bet-bot-pro",
     },
     {

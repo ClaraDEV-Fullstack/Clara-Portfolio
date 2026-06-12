@@ -27,16 +27,7 @@ export default function BetBotProCaseStudy() {
                         bets.koryx.net
                     </a>
                     . DeepSeek + Gemini research, Kelly bankroll, coupon generation, and Playwright automation.
-                    {" "}
-                    <a
-                        href="https://github.com/godofmarket/Bet_Bot_Pro"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-green-400 hover:underline"
-                    >
-                        Source on GitHub
-                    </a>
-                    .
+                    Source code is private (KoryxTech client project).
                 </p>
             </motion.div>
 
