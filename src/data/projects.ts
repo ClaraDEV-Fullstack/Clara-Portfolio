@@ -110,6 +110,11 @@ export const betBotDesktopScreenshots: ScreenshotGroup[] = [
     { src: "/images/bet-bot-pro/desktop-06-my-bets.png", label: "My bets — activity tracking" },
 ];
 
+export const betBotApiScreenshots: ScreenshotGroup[] = [
+    { src: "/images/bet-bot-pro/desktop-08-api-overview.png", label: "FastAPI OpenAPI — platform overview" },
+    { src: "/images/bet-bot-pro/desktop-09-api-endpoints.png", label: "REST API — predictions, auto-research & BetPawa automation" },
+];
+
 export const betBotMobileScreenshots: ScreenshotGroup[] = [
     { src: "/images/bet-bot-pro/mobile-01-home.png", label: "Landing (mobile)" },
     { src: "/images/bet-bot-pro/mobile-02-dashboard.png", label: "Coupon generator (mobile)" },

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { betBotDesktopScreenshots, betBotMobileScreenshots } from "@/data/projects";
+import { betBotApiScreenshots, betBotDesktopScreenshots, betBotMobileScreenshots } from "@/data/projects";
 
 export default function BetBotProCaseStudy() {
     return (
@@ -33,6 +33,7 @@ export default function BetBotProCaseStudy() {
 
             <div className="space-y-12">
                 <ScreenshotGallery title="Desktop — App" items={betBotDesktopScreenshots} />
+                <ScreenshotGallery title="Backend — FastAPI OpenAPI docs" items={betBotApiScreenshots} />
                 <ScreenshotGallery title="Mobile" items={betBotMobileScreenshots} compact />
             </div>
         </section>
