@@ -85,7 +85,7 @@ export default function FeaturedProjectsSection() {
                     <p className="text-gray-300 max-w-2xl mx-auto">Professional full-stack solutions built with scalable architecture.</p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {projects.map((project, index) => (
                         <motion.div
                             key={project.id}

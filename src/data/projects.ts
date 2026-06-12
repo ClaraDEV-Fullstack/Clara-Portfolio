@@ -21,6 +21,19 @@ export interface ScreenshotGroup {
 
 export const projects: Project[] = [
     {
+        id: 6,
+        title: "Bet Bot Pro @ KoryxTech",
+        description:
+            "AI sports betting assistant for BetPawa Cameroon — DeepSeek + Gemini match research, Kelly Criterion bankroll, coupon generation, and Playwright auto-bet with live WebSocket logs. Deployed at bets.koryx.net.",
+        technologies: ["Next.js", "TypeScript", "FastAPI", "Playwright", "Redis", "PostgreSQL", "Docker"],
+        image: "/images/bet-bot-pro/desktop-01-home.png",
+        demoUrl: "https://bets.koryx.net/",
+        githubUrl: "https://github.com/godofmarket/Bet_Bot_Pro",
+        status: "Completed",
+        featured: true,
+        caseStudyAnchor: "bet-bot-pro",
+    },
+    {
         id: 5,
         title: "God of Market @ KoryxTech",
         description:
@@ -84,6 +97,23 @@ export const projects: Project[] = [
         isPrivate: true,
         caseStudyAnchor: "vyralo-koryxtech",
     },
+];
+
+export const betBotDesktopScreenshots: ScreenshotGroup[] = [
+    { src: "/images/bet-bot-pro/desktop-01-home.png", label: "Landing — AI-powered BetPawa assistant" },
+    { src: "/images/bet-bot-pro/desktop-02-auth.png", label: "BetPawa secure login" },
+    { src: "/images/bet-bot-pro/desktop-03-predictions.png", label: "AI predictions — match analysis" },
+    { src: "/images/bet-bot-pro/desktop-04-dashboard.png", label: "Dashboard — advanced coupon generator" },
+    { src: "/images/bet-bot-pro/desktop-05-ready-coupons.png", label: "Ready-to-play coupons" },
+    { src: "/images/bet-bot-pro/desktop-07-generated-coupons.png", label: "Generated coupons — booking codes" },
+    { src: "/images/bet-bot-pro/desktop-06-my-bets.png", label: "My bets — activity tracking" },
+];
+
+export const betBotMobileScreenshots: ScreenshotGroup[] = [
+    { src: "/images/bet-bot-pro/mobile-01-home.png", label: "Landing (mobile)" },
+    { src: "/images/bet-bot-pro/mobile-02-dashboard.png", label: "Coupon generator (mobile)" },
+    { src: "/images/bet-bot-pro/mobile-04-predictions.png", label: "AI predictions (mobile)" },
+    { src: "/images/bet-bot-pro/mobile-03-coupons.png", label: "Ready coupons (mobile)" },
 ];
 
 export const vyraloDesktopScreenshots: ScreenshotGroup[] = [

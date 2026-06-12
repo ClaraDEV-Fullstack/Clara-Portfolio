@@ -70,6 +70,17 @@ Clara-Portfolio/
 
 ---
 
+## 🤖 Bet Bot Pro @ KoryxTech {#bet-bot-pro}
+
+AI sports betting assistant for **BetPawa Cameroon** — Next.js, FastAPI, Playwright, DeepSeek + Gemini.
+
+- **Live:** [bets.koryx.net](https://bets.koryx.net/)
+- **Repo:** [github.com/godofmarket/Bet_Bot_Pro](https://github.com/godofmarket/Bet_Bot_Pro)
+- **Features:** AI predictions, Kelly bankroll, coupon generator, auto-bet automation
+- **Case study:** [/projects#bet-bot-pro](https://claradev.vercel.app/projects#bet-bot-pro)
+
+---
+
 ## 🚀 God of Market @ KoryxTech {#god-of-market-koryxtech}
 
 Premium trading ecosystem built for **KoryxTech** — Next.js, FastAPI, PostgreSQL, Redis, Stripe, Docker.

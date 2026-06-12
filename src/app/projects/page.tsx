@@ -8,6 +8,7 @@ import { Card, CardContent } from "../../components/ui/card";
 import { motion, AnimatePresence } from "framer-motion";
 import 'animate.css';
 import { projects, type Project, type ProjectStatus } from "@/data/projects";
+import BetBotProCaseStudy from "@/components/BetBotProCaseStudy";
 import GodOfMarketCaseStudy from "@/components/GodOfMarketCaseStudy";
 import VyraloCaseStudy from "@/components/VyraloCaseStudy";
 
@@ -324,6 +325,7 @@ export default function ProjectsPage() {
                     ))}
                 </div>
 
+                <BetBotProCaseStudy />
                 <GodOfMarketCaseStudy />
                 <VyraloCaseStudy />
 
