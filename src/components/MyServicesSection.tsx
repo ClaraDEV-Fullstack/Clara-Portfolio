@@ -32,15 +32,6 @@ const services = [
     },
 ];
 
-const cardVariants = {
-    hidden: { opacity: 0, y: 32 },
-    visible: (i: number) => ({
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.5, delay: i * 0.12, ease: 'easeOut' },
-    }),
-};
-
 export default function CreativeServicesSection() {
     return (
         <section className="py-14 md:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
@@ -80,11 +71,10 @@ export default function CreativeServicesSection() {
                         return (
                             <motion.article
                                 key={service.title}
-                                custom={index}
-                                variants={cardVariants}
-                                initial="hidden"
-                                whileInView="visible"
+                                initial={{ opacity: 0, y: 32 }}
+                                whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: '-40px' }}
+                                transition={{ duration: 0.5, delay: index * 0.12 }}
                                 whileHover={{ y: -6 }}
                                 className={`group relative bg-white rounded-2xl border border-blue-100/80 shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden`}
                             >
