@@ -135,9 +135,6 @@ export const vyraloDesktopScreenshots: ScreenshotGroup[] = [
     { src: "/images/vyralo/desktop-05-packages.png", label: "Growth packages" },
     { src: "/images/vyralo/desktop-06-balance.png", label: "Balance & deposits" },
     { src: "/images/vyralo/desktop-07-admin-overview.png", label: "Admin overview" },
-    { src: "/images/vyralo/desktop-08-platforms.png", label: "Platforms" },
-    { src: "/images/vyralo/desktop-09-auth.png", label: "Sign-in" },
-    { src: "/images/vyralo/desktop-10-admin-analytics.png", label: "Admin analytics" },
     { src: "/images/vyralo/desktop-11-admin-orders.png", label: "Admin orders" },
     { src: "/images/vyralo/desktop-12-admin-transactions.png", label: "Admin transactions" },
 ];
@@ -176,7 +173,6 @@ export const gomMobileScreenshots: ScreenshotGroup[] = [
 ];
 
 export const vyraloMobileScreenshots: ScreenshotGroup[] = [
-    { src: "/images/vyralo/mobile-01-home.png", label: "Landing (mobile)" },
     { src: "/images/vyralo/mobile-02-packages.png", label: "Packages grid" },
     { src: "/images/vyralo/mobile-03-dashboard.png", label: "Dashboard" },
     { src: "/images/vyralo/mobile-04-order-create.png", label: "New order" },
