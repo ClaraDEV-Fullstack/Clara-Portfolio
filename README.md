@@ -1,6 +1,6 @@
 # 🌟 Clara Beri — Portfolio Website
 
-![Portfolio Preview](public/images/layout.jpg)
+![Portfolio Preview](public/images/landingpage.png)
 
 A modern, responsive portfolio website built with **Next.js**, showcasing my work as a **Full-Stack Web & Mobile Developer** and **Graphic Designer**.
 

@@ -101,19 +101,6 @@ export const projects: Project[] = [
         isPrivate: true,
         caseStudyAnchor: "vyralo-koryxtech",
     },
-    {
-        id: 7,
-        title: "Developer Portfolio — Clara Beri",
-        description:
-            "Professional portfolio built with Next.js, TypeScript, and Framer Motion. Responsive layout, animated sections, private-project case studies with screenshot galleries, and continuous deployment on Vercel.",
-        technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-        image: "/images/portfolio-website.jpg",
-        demoUrl: "https://claradev.vercel.app",
-        githubUrl: "https://github.com/ClaraDEV-Fullstack/Clara-Portfolio",
-        status: "Completed",
-        featured: true,
-        showOnHome: false,
-    },
 ];
 
 export const betBotDesktopScreenshots: ScreenshotGroup[] = [
