@@ -8,6 +8,7 @@ import { Card, CardContent } from "../../components/ui/card";
 import { motion, AnimatePresence } from "framer-motion";
 import 'animate.css';
 import { projects, type Project, type ProjectStatus } from "@/data/projects";
+import GodOfMarketCaseStudy from "@/components/GodOfMarketCaseStudy";
 import VyraloCaseStudy from "@/components/VyraloCaseStudy";
 
 // Dynamic imports for icons to reduce bundle size
@@ -113,19 +114,19 @@ export default function ProjectsPage() {
     };
 
     const handleDemoClick = (project: Project) => {
+        if (project.demoUrl && project.demoUrl !== "#") {
+            window.open(project.demoUrl, "_blank");
+            return;
+        }
         if (project.isPrivate) {
             setToastMessage("Private client project — no public demo available.");
             setShowToast(true);
             setTimeout(() => setShowToast(false), 3000);
             return;
         }
-        if (project.demoUrl && project.demoUrl !== "#") {
-            window.open(project.demoUrl, "_blank");
-        } else {
-            setToastMessage("Demo is currently being deployed. Check back soon!");
-            setShowToast(true);
-            setTimeout(() => setShowToast(false), 3000);
-        }
+        setToastMessage("Demo is currently being deployed. Check back soon!");
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 3000);
     };
 
     return (
@@ -274,19 +275,17 @@ export default function ProjectsPage() {
                                         <button
                                             onClick={() => handleDemoClick(project)}
                                             className={`flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-medium justify-center flex-1 text-center transition-all duration-300
-                                                ${project.isPrivate
-                                                ? "bg-gray-200 text-gray-500 cursor-pointer hover:bg-gray-300 border border-gray-300 active:scale-95"
-                                                : (project.demoUrl && project.demoUrl !== "#")
+                                                ${(project.demoUrl && project.demoUrl !== "#")
                                                 ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg hover:scale-105 active:scale-95"
                                                 : "bg-gray-200 text-gray-500 cursor-pointer hover:bg-gray-300 border border-gray-300 active:scale-95"
                                             }`}
                                         >
                                             <FaExternalLinkAlt className="text-xs" />
                                             <span>
-                                                {project.isPrivate
+                                                {(project.demoUrl && project.demoUrl !== "#")
+                                                    ? "Live Demo"
+                                                    : project.isPrivate
                                                     ? "Private Project"
-                                                    : (project.demoUrl && project.demoUrl !== "#")
-                                                    ? "View Demo"
                                                     : "Deployment"}
                                             </span>
                                         </button>
@@ -325,6 +324,7 @@ export default function ProjectsPage() {
                     ))}
                 </div>
 
+                <GodOfMarketCaseStudy />
                 <VyraloCaseStudy />
 
                 {/* CTA */}

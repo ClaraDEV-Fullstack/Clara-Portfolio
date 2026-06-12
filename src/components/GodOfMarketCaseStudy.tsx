@@ -1,0 +1,97 @@
+'use client';
+
+import Image from "next/image";
+import { motion } from "framer-motion";
+import {
+    gomAdminScreenshots,
+    gomApiScreenshots,
+    gomMobileScreenshots,
+    gomPublicScreenshots,
+    gomUserScreenshots,
+} from "@/data/projects";
+
+export default function GodOfMarketCaseStudy() {
+    return (
+        <section id="god-of-market-koryxtech" className="mt-20 md:mt-28 scroll-mt-24">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="text-center mb-10"
+            >
+                <p className="text-emerald-400 text-sm font-semibold uppercase tracking-wider mb-2">Case Study</p>
+                <h2 className="text-2xl md:text-4xl font-bold text-white mb-3">God of Market @ KoryxTech</h2>
+                <p className="text-gray-400 max-w-3xl mx-auto text-sm md:text-base leading-relaxed">
+                    Private KoryxTech client project — full-stack trading platform with live deployment at{" "}
+                    <a
+                        href="https://godofmarket.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-emerald-400 hover:underline"
+                    >
+                        godofmarket.com
+                    </a>
+                    . Signals, robot automation, market analysis, education, subscriptions, and RBAC admin.
+                </p>
+            </motion.div>
+
+            <div className="space-y-12">
+                <ScreenshotGallery title="Public — Marketing & access" items={gomPublicScreenshots} />
+                <ScreenshotGallery title="Desktop — User app" items={gomUserScreenshots} />
+                <ScreenshotGallery title="Backend — FastAPI OpenAPI docs" items={gomApiScreenshots} />
+                <ScreenshotGallery title="Desktop — Admin panel" items={gomAdminScreenshots} />
+                <ScreenshotGallery title="Mobile" items={gomMobileScreenshots} compact />
+            </div>
+        </section>
+    );
+}
+
+function ScreenshotGallery({
+    title,
+    items,
+    compact = false,
+}: {
+    title: string;
+    items: { src: string; label: string }[];
+    compact?: boolean;
+}) {
+    return (
+        <div>
+            <h3 className="text-lg md:text-xl font-semibold text-white mb-4 border-l-4 border-emerald-500 pl-3">
+                {title}
+            </h3>
+            <div
+                className={`grid gap-4 ${
+                    compact
+                        ? "grid-cols-2 sm:grid-cols-3"
+                        : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+                }`}
+            >
+                {items.map((item, index) => (
+                    <motion.figure
+                        key={item.src}
+                        initial={{ opacity: 0, y: 16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: index * 0.05 }}
+                        className="group rounded-xl overflow-hidden bg-gray-800/50 border border-gray-700/60 hover:border-emerald-500/40 transition-colors"
+                    >
+                        <div className={`relative w-full ${compact ? "aspect-[9/19]" : "aspect-video"} bg-gray-900`}>
+                            <Image
+                                src={item.src}
+                                alt={item.label}
+                                fill
+                                sizes={compact ? "(max-width: 640px) 50vw, 33vw" : "(max-width: 1024px) 50vw, 33vw"}
+                                className="object-cover object-top group-hover:scale-[1.02] transition-transform duration-300"
+                            />
+                        </div>
+                        <figcaption className="px-3 py-2 text-xs md:text-sm text-gray-300 font-medium">
+                            {item.label}
+                        </figcaption>
+                    </motion.figure>
+                ))}
+            </div>
+        </div>
+    );
+}

@@ -70,6 +70,19 @@ Clara-Portfolio/
 
 ---
 
+## 🚀 God of Market @ KoryxTech {#god-of-market-koryxtech}
+
+Premium trading ecosystem built for **KoryxTech** — Next.js, FastAPI, PostgreSQL, Redis, Stripe, Docker.
+
+- **Live:** [godofmarket.com](https://godofmarket.com/)
+- **User app:** signals, robot, market analysis, LMS, subscriptions
+- **Admin panel:** RBAC roles, permissions, user management
+- **Case study:** [/projects#god-of-market-koryxtech](https://claradev.vercel.app/projects#god-of-market-koryxtech)
+
+> Source code is private (client project). Portfolio hosts screenshots and live demo link only.
+
+---
+
 ## 🚀 Vyralo @ KoryxTech {#vyralo-koryxtech}
 
 Private full-stack SMM growth platform built for **KoryxTech** — Laravel, Inertia.js, React, TypeScript, PostgreSQL, Docker.

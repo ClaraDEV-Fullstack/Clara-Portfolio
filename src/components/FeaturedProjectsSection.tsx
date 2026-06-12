@@ -57,15 +57,15 @@ export default function FeaturedProjectsSection() {
     };
 
     const handleDemoClick = (project: Project) => {
+        if (project.demoUrl) {
+            window.open(project.demoUrl, "_blank");
+            return;
+        }
         if (project.isPrivate) {
             showToastMessage("Private client project — no public demo available.");
             return;
         }
-        if (project.demoUrl) {
-            window.open(project.demoUrl, "_blank");
-        } else {
-            showToastMessage("Demo is currently being deployed. Check back soon!");
-        }
+        showToastMessage("Demo is currently being deployed. Check back soon!");
     };
 
     return (
@@ -85,7 +85,7 @@ export default function FeaturedProjectsSection() {
                     <p className="text-gray-300 max-w-2xl mx-auto">Professional full-stack solutions built with scalable architecture.</p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                     {projects.map((project, index) => (
                         <motion.div
                             key={project.id}
@@ -125,15 +125,13 @@ export default function FeaturedProjectsSection() {
                                     <button
                                         onClick={() => handleDemoClick(project)}
                                         className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-lg text-xs font-bold transition duration-300
-                                            ${project.isPrivate
-                                            ? "bg-gray-200 text-gray-500 cursor-pointer hover:bg-gray-300 border border-gray-300"
-                                            : project.demoUrl
+                                            ${project.demoUrl
                                             ? "bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lg"
                                             : "bg-gray-200 text-gray-500 cursor-pointer hover:bg-gray-300 border border-gray-300"
                                         }`}
                                     >
                                         <FaExternalLinkAlt size={10} />
-                                        {project.isPrivate ? "Private Project" : project.demoUrl ? "Live Demo" : "Deployment in Process"}
+                                        {project.demoUrl ? "Live Demo" : project.isPrivate ? "Private Project" : "Deployment in Process"}
                                     </button>
 
                                     {project.caseStudyAnchor ? (

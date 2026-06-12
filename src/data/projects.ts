@@ -21,6 +21,20 @@ export interface ScreenshotGroup {
 
 export const projects: Project[] = [
     {
+        id: 5,
+        title: "God of Market @ KoryxTech",
+        description:
+            "Premium trading ecosystem — signals, trading robot, market analysis, LMS, Stripe subscriptions, and RBAC admin. Next.js + FastAPI stack with Telegram integration. Live at godofmarket.com.",
+        technologies: ["Next.js", "TypeScript", "FastAPI", "PostgreSQL", "Redis", "Stripe", "Docker"],
+        image: "/images/god-of-market/desktop-01-home.png",
+        demoUrl: "https://godofmarket.com/",
+        githubUrl: "",
+        status: "Completed",
+        featured: true,
+        isPrivate: true,
+        caseStudyAnchor: "god-of-market-koryxtech",
+    },
+    {
         id: 1,
         title: "NexShop E-Commerce",
         description:
@@ -85,6 +99,39 @@ export const vyraloDesktopScreenshots: ScreenshotGroup[] = [
     { src: "/images/vyralo/desktop-10-admin-analytics.png", label: "Admin analytics" },
     { src: "/images/vyralo/desktop-11-admin-orders.png", label: "Admin orders" },
     { src: "/images/vyralo/desktop-12-admin-transactions.png", label: "Admin transactions" },
+];
+
+export const gomPublicScreenshots: ScreenshotGroup[] = [
+    { src: "/images/god-of-market/desktop-01-home.png", label: "Landing page — hero & live KPI preview" },
+    { src: "/images/god-of-market/desktop-13-landing-dark.png", label: "Landing page — dark hero variant" },
+    { src: "/images/god-of-market/desktop-08-auth.png", label: "Sign-in & secure access" },
+];
+
+export const gomUserScreenshots: ScreenshotGroup[] = [
+    { src: "/images/god-of-market/desktop-02-dashboard.png", label: "Premium user dashboard" },
+    { src: "/images/god-of-market/desktop-04-signals.png", label: "Trading signals — history & performance" },
+    { src: "/images/god-of-market/desktop-05-signal-stats.png", label: "Signal statistics & win rate" },
+    { src: "/images/god-of-market/desktop-07-market.png", label: "Market analysis — Forex pairs" },
+    { src: "/images/god-of-market/desktop-03-learn.png", label: "Trading education — LMS chapters" },
+    { src: "/images/god-of-market/desktop-06-profile.png", label: "User profile & account settings" },
+];
+
+export const gomApiScreenshots: ScreenshotGroup[] = [
+    { src: "/images/god-of-market/desktop-14-api-overview.png", label: "FastAPI OpenAPI — platform overview" },
+    { src: "/images/god-of-market/desktop-15-api-endpoints.png", label: "REST API — auth, users, signals & more" },
+];
+
+export const gomAdminScreenshots: ScreenshotGroup[] = [
+    { src: "/images/god-of-market/desktop-09-admin-overview.png", label: "Admin overview — KPIs & health" },
+    { src: "/images/god-of-market/desktop-12-admin-users.png", label: "User management — premium tiers" },
+    { src: "/images/god-of-market/desktop-10-admin-roles.png", label: "RBAC roles registry" },
+    { src: "/images/god-of-market/desktop-11-admin-permissions.png", label: "Permissions catalog" },
+];
+
+export const gomMobileScreenshots: ScreenshotGroup[] = [
+    { src: "/images/god-of-market/mobile-01-home.png", label: "Landing (mobile)" },
+    { src: "/images/god-of-market/mobile-02-dashboard.png", label: "Dashboard (mobile)" },
+    { src: "/images/god-of-market/mobile-03-account.png", label: "Account menu & i18n (mobile)" },
 ];
 
 export const vyraloMobileScreenshots: ScreenshotGroup[] = [
