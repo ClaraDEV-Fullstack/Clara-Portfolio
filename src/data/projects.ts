@@ -34,14 +34,14 @@ export const projects: Project[] = [
     },
     {
         id: 2,
-        title: "SmartSpend Tracker",
+        title: "SmartSpend — Intelligent Finance Tracker",
         description:
-            "Full-stack mobile application for financial management. Built with a Flutter frontend consuming Django REST APIs. Includes real-time data management and persistent storage for tracking user expenses.",
-        technologies: ["Flutter", "Django", "MySQL", "REST APIs"],
-        image: "/images/dashboard.png",
+            "Cross-platform personal finance app (Android, iOS, Web, Windows) built with Flutter and Django REST API. Offline-first expense tracking with sync queues, Google Sign-In, biometric unlock, dashboard charts, budget alerts, recurring transactions, CSV/PDF export, AI assistant, and English/French localization.",
+        technologies: ["Flutter", "Django", "Python", "MySQL", "REST APIs"],
+        image: "/images/smartspend.png",
         demoUrl: "",
         githubUrl: "https://github.com/ClaraDEV-Fullstack/SmartSpend-App",
-        status: "Completed",
+        status: "In Progress",
         featured: true,
     },
     {
