@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { vyraloDesktopScreenshots, vyraloMobileScreenshots } from "@/data/projects";
+import { vyraloApiScreenshots, vyraloDesktopScreenshots, vyraloMobileScreenshots } from "@/data/projects";
 
 export default function VyraloCaseStudy() {
     return (
@@ -24,6 +24,7 @@ export default function VyraloCaseStudy() {
 
             <div className="space-y-12">
                 <ScreenshotGallery title="Desktop — User app" items={vyraloDesktopScreenshots.slice(0, 6)} />
+                <ScreenshotGallery title="Backend — Laravel API surface" items={vyraloApiScreenshots} />
                 <ScreenshotGallery title="Desktop — Admin panel" items={vyraloDesktopScreenshots.slice(6)} />
                 <ScreenshotGallery title="Mobile" items={vyraloMobileScreenshots} compact />
             </div>

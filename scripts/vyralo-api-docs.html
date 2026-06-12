@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vyralo API — Laravel Backend</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #fafafa; color: #3b4151; }
+    .topbar { background: #1b1b1b; color: #fff; padding: 12px 24px; display: flex; align-items: center; gap: 16px; }
+    .topbar h1 { font-size: 1.25rem; font-weight: 700; }
+    .topbar span { font-size: 0.75rem; background: #49cc90; color: #fff; padding: 2px 8px; border-radius: 4px; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 24px; }
+    .intro { background: #fff; border: 1px solid #e8e8e8; border-radius: 8px; padding: 20px 24px; margin-bottom: 24px; }
+    .intro h2 { font-size: 1.5rem; margin-bottom: 8px; }
+    .intro p { line-height: 1.6; color: #555; font-size: 0.95rem; }
+    .tag { display: inline-block; background: #e8f4fd; color: #0b7dda; font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; margin-right: 6px; margin-top: 8px; }
+    section { margin-bottom: 20px; }
+    section > h3 { font-size: 1.1rem; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 2px solid #0b7dda; color: #1b1b1b; }
+    .endpoint { background: #fff; border: 1px solid #e8e8e8; border-radius: 6px; margin-bottom: 8px; overflow: hidden; }
+    .endpoint-head { display: flex; align-items: center; gap: 12px; padding: 12px 16px; cursor: default; }
+    .method { font-size: 0.7rem; font-weight: 700; padding: 4px 8px; border-radius: 4px; min-width: 56px; text-align: center; color: #fff; }
+    .get { background: #61affe; }
+    .post { background: #49cc90; }
+    .patch { background: #50e3c2; color: #1b1b1b; }
+    .delete { background: #f93e3e; }
+    .path { font-family: monospace; font-size: 0.9rem; font-weight: 600; }
+    .desc { color: #777; font-size: 0.85rem; margin-left: auto; }
+    .endpoint-body { padding: 12px 16px 16px; border-top: 1px solid #f0f0f0; font-size: 0.85rem; color: #555; line-height: 1.5; }
+    .lock { color: #999; font-size: 0.8rem; }
+    #page2 { margin-top: 40px; padding-top: 24px; border-top: 3px solid #e8e8e8; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <h1>Vyralo Backend API</h1>
+    <span>Laravel 13 · Inertia</span>
+    <span style="background:#737373">KoryxTech</span>
+  </div>
+  <div class="wrap" id="page1">
+    <div class="intro">
+      <h2>Vyralo @ KoryxTech</h2>
+      <p>
+        Laravel backend for the SMM growth platform — session-authenticated Inertia web routes,
+        JSON payment webhooks, secured cron jobs, and SMM supplier panel integration via <code>SmmApiService</code>.
+      </p>
+      <span class="tag">PostgreSQL</span>
+      <span class="tag">PossaPay</span>
+      <span class="tag">Crypto deposits</span>
+      <span class="tag">SMM panel API</span>
+      <span class="tag">Docker</span>
+    </div>
+
+    <section>
+      <h3>SMM Supplier API (SmmApiService)</h3>
+      <div class="endpoint"><div class="endpoint-head"><span class="method post">POST</span><span class="path">supplier panel</span><span class="desc">action: add</span></div><div class="endpoint-body">Place order — service, link, quantity → external order ID</div></div>
+      <div class="endpoint"><div class="endpoint-head"><span class="method post">POST</span><span class="path">supplier panel</span><span class="desc">action: status</span></div><div class="endpoint-body">Batch order status sync — charge, remains, completion state</div></div>
+      <div class="endpoint"><div class="endpoint-head"><span class="method post">POST</span><span class="path">supplier panel</span><span class="desc">action: services</span></div><div class="endpoint-body">Fetch supplier catalog for admin sync &amp; service linking</div></div>
+      <div class="endpoint"><div class="endpoint-head"><span class="method post">POST</span><span class="path">supplier panel</span><span class="desc">action: balance</span></div><div class="endpoint-body">Supplier account balance check</div></div>
+      <div class="endpoint"><div class="endpoint-head"><span class="method post">POST</span><span class="path">supplier panel</span><span class="desc">action: refill</span></div><div class="endpoint-body">Request order refill from supplier panel</div></div>
+    </section>
+
+    <section>
+      <h3>Admin — Supplier sync</h3>
+      <div class="endpoint"><div class="endpoint-head"><span class="method get">GET</span><span class="path">/admin/supplier-services</span><span class="lock">🔒 admin</span></div><div class="endpoint-body">Supplier catalog + internal service mapping UI</div></div>
+      <div class="endpoint"><div class="endpoint-head"><span class="method post">POST</span><span class="path">/admin/supplier-services/sync</span><span class="lock">🔒 admin</span></div><div class="endpoint-body">Sync services from SMM panel into local database</div></div>
+      <div class="endpoint"><div class="endpoint-head"><span class="method post">POST</span><span class="path">/admin/supplier-services/link/{service}</span><span class="lock">🔒 admin</span></div><div class="endpoint-body">Link internal service to supplier service ID</div></div>
+      <div class="endpoint"><div class="endpoint-head"><span class="method post">POST</span><span class="path">/admin/orders/{order}/submit</span><span class="lock">🔒 admin</span></div><div class="endpoint-body">Submit pending order to supplier via SmmApiService</div></div>
+    </section>
+  </div>
+
+  <div class="wrap" id="page2">
+    <section>
+      <h3>Payments &amp; webhooks (JSON)</h3>
+      <div class="endpoint"><div class="endpoint-head"><span class="method post">POST</span><span class="path">/balance/possapay/init</span><span class="lock">🔒 auth</span></div><div class="endpoint-body">Initialize PossaPay mobile money deposit session</div></div>
+      <div class="endpoint"><div class="endpoint-head"><span class="method post">POST</span><span class="path">/balance/possapay/confirm</span><span class="lock">🔒 auth</span></div><div class="endpoint-body">Confirm deposit and credit user wallet</div></div>
+      <div class="endpoint"><div class="endpoint-head"><span class="method post">POST</span><span class="path">/webhooks/possapay</span></div><div class="endpoint-body">Server-side PossaPay webhook — signature verified, idempotent crediting</div></div>
+      <div class="endpoint"><div class="endpoint-head"><span class="method post">POST</span><span class="path">/balance/deposit</span><span class="lock">🔒 auth</span></div><div class="endpoint-body">Crypto deposit request — pending admin approval flow</div></div>
+    </section>
+
+    <section>
+      <h3>Cron &amp; automation</h3>
+      <div class="endpoint"><div class="endpoint-head"><span class="method get">GET</span><span class="path">/cron/sync-status</span><span class="lock">🔒 CRON_SECRET</span></div><div class="endpoint-body">Poll SMM panel for order status updates</div></div>
+      <div class="endpoint"><div class="endpoint-head"><span class="method get">GET</span><span class="path">/cron/process-scheduled</span><span class="lock">🔒 CRON_SECRET</span></div><div class="endpoint-body">Release scheduled orders when start time reached</div></div>
+      <div class="endpoint"><div class="endpoint-head"><span class="method get">GET</span><span class="path">/cron/process-dripfeed</span><span class="lock">🔒 CRON_SECRET</span></div><div class="endpoint-body">Generate drip-feed child orders on interval</div></div>
+    </section>
+
+    <section>
+      <h3>Orders (authenticated web)</h3>
+      <div class="endpoint"><div class="endpoint-head"><span class="method post">POST</span><span class="path">/orders</span><span class="lock">🔒 auth</span></div><div class="endpoint-body">Create order — wallet debit, supplier submit, drip-feed &amp; schedule support</div></div>
+      <div class="endpoint"><div class="endpoint-head"><span class="method post">POST</span><span class="path">/orders/{order}/pause</span><span class="lock">🔒 auth</span></div><div class="endpoint-body">Pause active drip-feed sequence</div></div>
+      <div class="endpoint"><div class="endpoint-head"><span class="method post">POST</span><span class="path">/orders/{order}/resume</span><span class="lock">🔒 auth</span></div><div class="endpoint-body">Resume paused drip-feed</div></div>
+      <div class="endpoint"><div class="endpoint-head"><span class="method post">POST</span><span class="path">/orders/{order}/refill</span><span class="lock">🔒 auth</span></div><div class="endpoint-body">Request supplier refill for eligible order</div></div>
+    </section>
+  </div>
+</body>
+</html>

@@ -122,6 +122,11 @@ export const betBotMobileScreenshots: ScreenshotGroup[] = [
     { src: "/images/bet-bot-pro/mobile-03-coupons.png", label: "Ready coupons (mobile)" },
 ];
 
+export const vyraloApiScreenshots: ScreenshotGroup[] = [
+    { src: "/images/vyralo/desktop-13-api-overview.png", label: "Laravel backend — SMM supplier API & admin sync" },
+    { src: "/images/vyralo/desktop-14-api-endpoints.png", label: "Payments, webhooks, cron jobs & order automation" },
+];
+
 export const vyraloDesktopScreenshots: ScreenshotGroup[] = [
     { src: "/images/vyralo/desktop-01-home.png", label: "Landing page" },
     { src: "/images/vyralo/desktop-02-pricing.png", label: "Pricing" },
