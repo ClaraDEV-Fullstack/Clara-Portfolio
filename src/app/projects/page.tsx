@@ -2,10 +2,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import dynamic from "next/dynamic";
 import { Card, CardContent } from "../../components/ui/card";
 import { motion, AnimatePresence } from "framer-motion";
 import 'animate.css';
+import { projects, type Project, type ProjectStatus } from "@/data/projects";
+import VyraloCaseStudy from "@/components/VyraloCaseStudy";
 
 // Dynamic imports for icons to reduce bundle size
 const FaGithub = dynamic(() => import("react-icons/fa").then(mod => mod.FaGithub));
@@ -20,6 +23,8 @@ const SiTypescript = dynamic(() => import("react-icons/si").then(mod => mod.SiTy
 const SiMysql = dynamic(() => import("react-icons/si").then(mod => mod.SiMysql));
 const SiFirebase = dynamic(() => import("react-icons/si").then(mod => mod.SiFirebase));
 const SiDjango = dynamic(() => import("react-icons/si").then(mod => mod.SiDjango));
+const SiLaravel = dynamic(() => import("react-icons/si").then(mod => mod.SiLaravel));
+const SiDocker = dynamic(() => import("react-icons/si").then(mod => mod.SiDocker));
 
 // --- Toast Component (Simple & Lightweight) ---
 const Toast = ({ message, show }: { message: string, show: boolean }) => {
@@ -39,61 +44,6 @@ const Toast = ({ message, show }: { message: string, show: boolean }) => {
         </AnimatePresence>
     );
 };
-
-// Types
-type ProjectStatus = "Completed" | "In Progress" | "Planning Phase";
-
-interface Project {
-    id: number;
-    title: string;
-    description: string;
-    technologies: string[];
-    image: string;
-    demoUrl: string;
-    githubUrl: string;
-    status: ProjectStatus;
-    featured?: boolean;
-}
-
-// Static projects data (optimized for production)
-const projects: Project[] = [
-    {
-        id: 1,
-        title: "NextShopSphere E-Commerce",
-        description:
-            "A production-ready full-stack e-commerce platform with real-world architecture. Features secure authentication, role-based access, product management, and an integrated admin dashboard. Dockerized for consistent deployment.",
-        technologies: ["Next.js", "Django", "MySQL", "Docker", "REST APIs"],
-        image: "/images/landingpage.png",
-        demoUrl: "https://nextshopsphere-ui.onrender.com/",
-        githubUrl: "https://github.com/ClaraDEV-Fullstack/NextShopSphere",
-        status: "Completed",
-        featured: true
-    },
-    {
-        id: 2,
-        title: "SmartSpend Tracker",
-        description:
-            "Full-stack mobile application for financial management. Built with a Flutter frontend consuming Django REST APIs. Includes real-time data management and persistent storage for tracking user expenses.",
-        technologies: ["Flutter", "Django", "MySQL", "REST APIs"],
-        image: "/images/dashboard.png",
-        demoUrl: "",
-        githubUrl: "https://github.com/ClaraDEV-Fullstack/SmartSpend-App",
-        status: "Completed",
-        featured: true
-    },
-    {
-        id: 3,
-        title: "NextSkill-Hub Job Platform",
-        description:
-            "A collaborative internship project connecting companies, freelancers, and job seekers. Focused on implementing scalable UI components and seamless API integrations within a real-world development workflow.",
-        technologies: ["Next.js", "Django", "PostgreSQL", "Tailwind CSS"],
-        image: "/images/NextSkill.png",
-        demoUrl: "",
-        githubUrl: "https://github.com/HighTechLabs/nextskillhub",
-        status: "In Progress",
-        featured: true
-    }
-];
 
 // Map technology names to icons
 const getTechIcon = (tech: string) => {
@@ -118,7 +68,10 @@ const getTechIcon = (tech: string) => {
         "Redux": <FaCode className="text-purple-400" />,
         "Firebase": <SiFirebase className="text-yellow-500" />,
         "REST APIs": <FaCode className="text-blue-400" />,
-        "Flutter": <FaCode className="text-blue-400" />
+        "Flutter": <FaCode className="text-blue-400" />,
+        "Laravel": <SiLaravel className="text-red-500" />,
+        "Inertia.js": <FaCode className="text-purple-400" />,
+        "Docker": <SiDocker className="text-blue-500" />
     };
 
     return iconMap[tech] || <FaCode className="text-gray-400" />;
@@ -159,9 +112,15 @@ export default function ProjectsPage() {
         return animations[index % animations.length];
     };
 
-    const handleDemoClick = (url: string) => {
-        if (url && url !== "#") {
-            window.open(url, "_blank");
+    const handleDemoClick = (project: Project) => {
+        if (project.isPrivate) {
+            setToastMessage("Private client project — no public demo available.");
+            setShowToast(true);
+            setTimeout(() => setShowToast(false), 3000);
+            return;
+        }
+        if (project.demoUrl && project.demoUrl !== "#") {
+            window.open(project.demoUrl, "_blank");
         } else {
             setToastMessage("Demo is currently being deployed. Check back soon!");
             setShowToast(true);
@@ -313,35 +272,60 @@ export default function ProjectsPage() {
                                     <div className="flex flex-row justify-between mt-auto gap-2 flex-wrap">
                                         {/* View Demo Button - Modified */}
                                         <button
-                                            onClick={() => handleDemoClick(project.demoUrl)}
+                                            onClick={() => handleDemoClick(project)}
                                             className={`flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-medium justify-center flex-1 text-center transition-all duration-300
-                                                ${(project.demoUrl && project.demoUrl !== "#")
+                                                ${project.isPrivate
+                                                ? "bg-gray-200 text-gray-500 cursor-pointer hover:bg-gray-300 border border-gray-300 active:scale-95"
+                                                : (project.demoUrl && project.demoUrl !== "#")
                                                 ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg hover:scale-105 active:scale-95"
                                                 : "bg-gray-200 text-gray-500 cursor-pointer hover:bg-gray-300 border border-gray-300 active:scale-95"
                                             }`}
                                         >
                                             <FaExternalLinkAlt className="text-xs" />
-                                            <span>{(project.demoUrl && project.demoUrl !== "#") ? "View Demo" : "Deployment"}</span>
+                                            <span>
+                                                {project.isPrivate
+                                                    ? "Private Project"
+                                                    : (project.demoUrl && project.demoUrl !== "#")
+                                                    ? "View Demo"
+                                                    : "Deployment"}
+                                            </span>
                                         </button>
 
-                                        {/* GitHub Button */}
-                                        <motion.a
-                                            href={project.githubUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-gray-200 text-black rounded-lg text-xs md:text-sm font-medium justify-center flex-1 text-center"
-                                            whileHover={{ scale: 1.05, backgroundColor: "#E5E7EB" }}
-                                            whileTap={{ scale: 0.95 }}
-                                        >
-                                            <FaGithub className="text-xs" />
-                                            <span>GitHub</span>
-                                        </motion.a>
+                                        {project.caseStudyAnchor ? (
+                                            <motion.div
+                                                className="flex-1"
+                                                whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
+                                            >
+                                                <Link
+                                                    href={`#${project.caseStudyAnchor}`}
+                                                    className="flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-gray-200 text-black rounded-lg text-xs md:text-sm font-medium justify-center w-full text-center hover:bg-gray-300 transition"
+                                                >
+                                                    <FaCode className="text-xs" />
+                                                    <span>Case Study</span>
+                                                </Link>
+                                            </motion.div>
+                                        ) : (
+                                            <motion.a
+                                                href={project.githubUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-gray-200 text-black rounded-lg text-xs md:text-sm font-medium justify-center flex-1 text-center"
+                                                whileHover={{ scale: 1.05, backgroundColor: "#E5E7EB" }}
+                                                whileTap={{ scale: 0.95 }}
+                                            >
+                                                <FaGithub className="text-xs" />
+                                                <span>GitHub</span>
+                                            </motion.a>
+                                        )}
                                     </div>
                                 </CardContent>
                             </Card>
                         </motion.div>
                     ))}
                 </div>
+
+                <VyraloCaseStudy />
 
                 {/* CTA */}
                 <motion.div className="mt-16 md:mt-20 text-center"

@@ -70,6 +70,18 @@ Clara-Portfolio/
 
 ---
 
+## 🚀 Vyralo @ KoryxTech {#vyralo-koryxtech}
+
+Private full-stack SMM growth platform built for **KoryxTech** — Laravel, Inertia.js, React, TypeScript, PostgreSQL, Docker.
+
+- **User app:** packages, orders, drip-feed, balance & crypto deposits, referrals
+- **Admin panel:** analytics, orders queue, transactions ledger
+- **Responsive:** desktop + mobile screenshots in the case study on [/projects](https://claradev.vercel.app/projects#vyralo-koryxtech)
+
+> Source code is private (client project). This repo hosts the portfolio case study only.
+
+---
+
 ## 📱 Pages Overview
 
 - **Home:** Hero intro, featured projects, services & skills, testimonials
