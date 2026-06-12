@@ -27,8 +27,8 @@ export default function ProjectThumbnail({ src, alt, status, onClick }: ProjectT
         >
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-10 pointer-events-none" />
             {status && (
-                <div className="absolute top-3 md:top-4 right-3 md:right-4 z-20 pointer-events-none">
-                    <span className={`px-2 py-1 md:px-3 md:py-1 rounded-full text-xs font-semibold text-white ${statusColors[status]}`}>
+                <div className="absolute top-2 right-2 sm:top-3 sm:right-3 md:top-4 md:right-4 z-20 pointer-events-none">
+                    <span className={`px-1.5 py-0.5 sm:px-2 sm:py-1 md:px-3 md:py-1 rounded-full text-[10px] sm:text-xs font-semibold text-white ${statusColors[status]}`}>
                         {status}
                     </span>
                 </div>
@@ -37,7 +37,7 @@ export default function ProjectThumbnail({ src, alt, status, onClick }: ProjectT
                 src={src}
                 alt={alt}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 640px) 50vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
             />
         </button>

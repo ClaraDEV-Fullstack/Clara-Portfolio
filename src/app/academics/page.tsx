@@ -234,10 +234,10 @@ export default function CareerPage() {
                         <div className="relative w-full mb-6 md:mb-8">
                             <div className="relative overflow-hidden rounded-[50%_50%_0%_0%] w-full aspect-[3/4]">
                                 <Image
-                                    src="/images/aboutpic.jpg"
-                                    alt="Professional portrait"
+                                    src="/images/profile2.jpg"
+                                    alt="Graduation portrait"
                                     fill
-                                    className="object-cover w-full h-full scale-110 transition-transform duration-700 ease-in-out"
+                                    className="object-cover w-full h-full -scale-x-100 scale-110 transition-transform duration-700 ease-in-out"
                                     style={{
                                         objectPosition: "center top",
                                     }}

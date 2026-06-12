@@ -101,14 +101,14 @@ export default function FeaturedProjectsSection() {
                 {featuredProjects.length === 0 ? (
                     <p className="text-center text-gray-400 text-sm">Completed projects will appear here soon.</p>
                 ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch max-w-5xl mx-auto">
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 items-stretch max-w-5xl mx-auto">
                     {featuredProjects.map((project, index) => (
                         <motion.div
                             key={project.id}
                             initial={{ opacity: 0, y: 30 }}
                             animate={inView ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-blue-500/20 transition-all flex flex-col h-full w-full min-w-0 min-h-[480px] group"
+                            className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-blue-500/20 transition-all flex flex-col h-full w-full min-w-0 md:min-h-[480px] group"
                         >
                             <ProjectThumbnail
                                 src={project.image}
@@ -123,49 +123,54 @@ export default function FeaturedProjectsSection() {
                                 }
                             />
 
-                            <div className="p-5 flex-1 flex flex-col">
-                                <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 min-h-[3.25rem]">{project.title}</h3>
-                                <p className="text-gray-600 text-sm line-clamp-3 mb-4 flex-1 min-h-[4.5rem]">{project.description}</p>
+                            <div className="p-2.5 sm:p-5 flex-1 flex flex-col">
+                                <h3 className="text-xs sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2 line-clamp-2">{project.title}</h3>
+                                <p className="text-gray-600 text-[11px] sm:text-sm line-clamp-2 sm:line-clamp-3 mb-2 sm:mb-4 flex-1">{project.description}</p>
 
-                                <div className="mb-4">
-                                    <div className="flex flex-wrap gap-2">
+                                <div className="mb-2 sm:mb-4">
+                                    <div className="flex flex-wrap gap-1 sm:gap-2">
                                         {project.technologies.slice(0, 4).map((tech, i) => (
-                                            <div key={i} className="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded border border-gray-200">
-                                                <span className="text-xs">{getTechIcon(tech)}</span>
-                                                <span className="text-[10px] font-semibold text-gray-700">{tech}</span>
+                                            <div key={i} className="flex items-center gap-0.5 sm:gap-1 bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded border border-gray-200">
+                                                <span className="text-[10px] sm:text-xs">{getTechIcon(tech)}</span>
+                                                <span className="text-[9px] sm:text-[10px] font-semibold text-gray-700 hidden sm:inline">{tech}</span>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
 
-                                <div className="flex gap-2">
+                                <div className="flex flex-col sm:flex-row gap-1.5 sm:gap-2">
                                     <button
                                         onClick={() => handleDemoClick(project)}
-                                        className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-lg text-xs font-bold transition duration-300
+                                        className={`flex-1 flex items-center justify-center gap-1 sm:gap-2 py-1.5 sm:py-2 rounded-lg text-[10px] sm:text-xs font-bold transition duration-300
                                             ${project.demoUrl
                                             ? "bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lg"
                                             : "bg-gray-200 text-gray-500 cursor-pointer hover:bg-gray-300 border border-gray-300"
                                         }`}
                                     >
                                         <FaExternalLinkAlt size={10} />
-                                        {project.demoUrl ? "Live Demo" : project.isPrivate ? "Private Project" : "Deployment in Process"}
+                                        <span className="hidden sm:inline">{project.demoUrl ? "Live Demo" : project.isPrivate ? "Private Project" : "Deployment in Process"}</span>
+                                        <span className="sm:hidden">{project.demoUrl ? "Demo" : project.isPrivate ? "Private" : "Deploy"}</span>
                                     </button>
 
                                     {project.caseStudyAnchor ? (
                                         <Link
                                             href={`/projects#${project.caseStudyAnchor}`}
-                                            className="flex-1 flex items-center justify-center gap-2 py-2 bg-gray-800 text-white rounded-lg text-xs font-bold hover:bg-black transition duration-300 hover:shadow-lg"
+                                            className="flex-1 flex items-center justify-center gap-1 sm:gap-2 py-1.5 sm:py-2 bg-gray-800 text-white rounded-lg text-[10px] sm:text-xs font-bold hover:bg-black transition duration-300 hover:shadow-lg"
                                         >
-                                            <FaCode size={12} /> Case Study
+                                            <FaCode size={12} />
+                                            <span className="hidden sm:inline">Case Study</span>
+                                            <span className="sm:hidden">Study</span>
                                         </Link>
                                     ) : project.githubUrl ? (
                                         <a
                                             href={project.githubUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="flex-1 flex items-center justify-center gap-2 py-2 bg-gray-800 text-white rounded-lg text-xs font-bold hover:bg-black transition duration-300 hover:shadow-lg"
+                                            className="flex-1 flex items-center justify-center gap-1 sm:gap-2 py-1.5 sm:py-2 bg-gray-800 text-white rounded-lg text-[10px] sm:text-xs font-bold hover:bg-black transition duration-300 hover:shadow-lg"
                                         >
-                                            <FaGithub size={12} /> View Code
+                                            <FaGithub size={12} />
+                                            <span className="hidden sm:inline">View Code</span>
+                                            <span className="sm:hidden">Code</span>
                                         </a>
                                     ) : null}
                                 </div>

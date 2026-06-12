@@ -207,7 +207,7 @@ export default function ProjectsPage() {
                 </div>
 
                 {/* Projects Grid — equal-width columns, uniform card heights */}
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 items-stretch w-full">
+                <div className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-6 md:gap-8 items-stretch w-full">
                     {filteredProjects.map((project, index) => (
                         <motion.div
                             key={project.id}
@@ -220,7 +220,7 @@ export default function ProjectsPage() {
                             style={{ animationDelay: `${index * 0.2}s` }}
                         >
                             <Card
-                                className="overflow-hidden bg-white border-gray-200 w-full h-full min-h-[480px] flex flex-col shadow-md transition-all duration-300 group-hover:shadow-xl group-hover:shadow-blue-500/20"
+                                className="overflow-hidden bg-white border-gray-200 w-full h-full md:min-h-[480px] flex flex-col shadow-md transition-all duration-300 group-hover:shadow-xl group-hover:shadow-blue-500/20"
                             >
                                 <ProjectThumbnail
                                     src={project.image}
@@ -230,55 +230,59 @@ export default function ProjectsPage() {
                                 />
 
                                 {/* Content */}
-                                <CardContent className="p-4 md:p-5 flex-1 flex flex-col space-y-2 md:space-y-3">
-                                    <div className="flex justify-between items-start gap-2 mb-1 min-h-[3.5rem]">
-                                        <h3 className="text-lg md:text-xl font-bold text-black line-clamp-2">{project.title}</h3>
+                                <CardContent className="p-2.5 sm:p-4 md:p-5 flex-1 flex flex-col space-y-1.5 sm:space-y-2 md:space-y-3">
+                                    <div className="flex justify-between items-start gap-1 sm:gap-2 mb-1 md:min-h-[3.5rem]">
+                                        <h3 className="text-xs sm:text-lg md:text-xl font-bold text-black line-clamp-2">{project.title}</h3>
                                         {project.featured && (
-                                            <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs px-2 py-1 rounded-full">
+                                            <span className="shrink-0 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-[9px] sm:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full">
                                                 Featured
                                             </span>
                                         )}
                                     </div>
 
-                                    {/* Description with line clamp */}
-                                    <p className="text-black text-sm md:text-base mb-2 md:mb-3 flex-1 line-clamp-3 min-h-[4.5rem]">
+                                    <p className="text-black text-[11px] sm:text-sm md:text-base mb-1 sm:mb-2 md:mb-3 flex-1 line-clamp-2 sm:line-clamp-3 md:min-h-[4.5rem]">
                                         {project.description}
                                     </p>
 
-                                    {/* Technologies */}
                                     <div>
-                                        <h4 className="text-xs md:text-sm font-semibold text-black mb-1 md:mb-2">Technologies:</h4>
+                                        <h4 className="hidden sm:block text-xs md:text-sm font-semibold text-black mb-1 md:mb-2">Technologies:</h4>
                                         <div className="flex flex-wrap gap-1 md:gap-2">
-                                            {project.technologies.map((tech, i) => (
+                                            {project.technologies.slice(0, 4).map((tech, i) => (
                                                 <div
                                                     key={i}
-                                                    className="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded-md border border-gray-300 hover:bg-gray-200 transition"
+                                                    className="flex items-center gap-0.5 sm:gap-1 bg-gray-100 px-1 sm:px-2 py-0.5 sm:py-1 rounded-md border border-gray-300 hover:bg-gray-200 transition"
                                                 >
-                                                    <span className="text-xs md:text-sm">{getTechIcon(tech)}</span>
-                                                    <span className="text-xs font-medium text-black">{tech}</span>
+                                                    <span className="text-[10px] sm:text-xs md:text-sm">{getTechIcon(tech)}</span>
+                                                    <span className="text-[9px] sm:text-xs font-medium text-black hidden sm:inline">{tech}</span>
                                                 </div>
                                             ))}
                                         </div>
-                                    </div> 
+                                    </div>
 
-                                    {/* Action Buttons */}
-                                    <div className="flex flex-row justify-between mt-auto gap-2 flex-wrap">
+                                    <div className="flex flex-col sm:flex-row justify-between mt-auto gap-1.5 sm:gap-2 pt-1">
                                         {/* View Demo Button - Modified */}
                                         <button
                                             onClick={() => handleDemoClick(project)}
-                                            className={`flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-medium justify-center flex-1 text-center transition-all duration-300
+                                            className={`flex items-center gap-1 md:gap-2 px-2 sm:px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-[10px] sm:text-xs md:text-sm font-medium justify-center flex-1 text-center transition-all duration-300
                                                 ${(project.demoUrl && project.demoUrl !== "#")
                                                 ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg hover:scale-105 active:scale-95"
                                                 : "bg-gray-200 text-gray-500 cursor-pointer hover:bg-gray-300 border border-gray-300 active:scale-95"
                                             }`}
                                         >
                                             <FaExternalLinkAlt className="text-xs" />
-                                            <span>
+                                            <span className="hidden sm:inline">
                                                 {(project.demoUrl && project.demoUrl !== "#")
                                                     ? "Live Demo"
                                                     : project.isPrivate
                                                     ? "Private Project"
                                                     : "Deployment"}
+                                            </span>
+                                            <span className="sm:hidden">
+                                                {(project.demoUrl && project.demoUrl !== "#")
+                                                    ? "Demo"
+                                                    : project.isPrivate
+                                                    ? "Private"
+                                                    : "Deploy"}
                                             </span>
                                         </button>
 
@@ -290,10 +294,11 @@ export default function ProjectsPage() {
                                             >
                                                 <Link
                                                     href={`#${project.caseStudyAnchor}`}
-                                                    className="flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-gray-200 text-black rounded-lg text-xs md:text-sm font-medium justify-center w-full text-center hover:bg-gray-300 transition"
+                                                    className="flex items-center gap-1 md:gap-2 px-2 sm:px-3 py-1.5 md:px-4 md:py-2 bg-gray-200 text-black rounded-lg text-[10px] sm:text-xs md:text-sm font-medium justify-center w-full text-center hover:bg-gray-300 transition"
                                                 >
                                                     <FaCode className="text-xs" />
-                                                    <span>Case Study</span>
+                                                    <span className="hidden sm:inline">Case Study</span>
+                                                    <span className="sm:hidden">Study</span>
                                                 </Link>
                                             </motion.div>
                                         ) : (
@@ -301,7 +306,7 @@ export default function ProjectsPage() {
                                                 href={project.githubUrl}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-gray-200 text-black rounded-lg text-xs md:text-sm font-medium justify-center flex-1 text-center"
+                                                className="flex items-center gap-1 md:gap-2 px-2 sm:px-3 py-1.5 md:px-4 md:py-2 bg-gray-200 text-black rounded-lg text-[10px] sm:text-xs md:text-sm font-medium justify-center flex-1 text-center"
                                                 whileHover={{ scale: 1.05, backgroundColor: "#E5E7EB" }}
                                                 whileTap={{ scale: 0.95 }}
                                             >
