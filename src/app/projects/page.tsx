@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, type MouseEvent } from "react";
-import Image from "next/image";
+import { useState, useCallback } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { Card, CardContent } from "../../components/ui/card";
@@ -11,6 +10,8 @@ import { projects, type Project, type ProjectStatus } from "@/data/projects";
 import BetBotProCaseStudy from "@/components/BetBotProCaseStudy";
 import GodOfMarketCaseStudy from "@/components/GodOfMarketCaseStudy";
 import VyraloCaseStudy from "@/components/VyraloCaseStudy";
+import ProjectImageLightbox, { type LightboxImage } from "@/components/projects/ProjectImageLightbox";
+import ProjectThumbnail from "@/components/projects/ProjectThumbnail";
 
 // Dynamic imports for icons to reduce bundle size
 const FaGithub = dynamic(() => import("react-icons/fa").then(mod => mod.FaGithub));
@@ -27,75 +28,6 @@ const SiFirebase = dynamic(() => import("react-icons/si").then(mod => mod.SiFire
 const SiDjango = dynamic(() => import("react-icons/si").then(mod => mod.SiDjango));
 const SiLaravel = dynamic(() => import("react-icons/si").then(mod => mod.SiLaravel));
 const SiDocker = dynamic(() => import("react-icons/si").then(mod => mod.SiDocker));
-const FaTimes = dynamic(() => import("react-icons/fa").then(mod => mod.FaTimes));
-
-// --- Image Lightbox ---
-const ImageLightbox = ({
-    project,
-    onClose,
-}: {
-    project: Project;
-    onClose: () => void;
-}) => {
-    useEffect(() => {
-        const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === "Escape") onClose();
-        };
-
-        document.body.style.overflow = "hidden";
-        window.addEventListener("keydown", handleKeyDown);
-
-        return () => {
-            document.body.style.overflow = "";
-            window.removeEventListener("keydown", handleKeyDown);
-        };
-    }, [onClose]);
-
-    return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-sm"
-            onClick={onClose}
-            role="dialog"
-            aria-modal="true"
-            aria-label={`${project.title} screenshot preview`}
-        >
-            <button
-                type="button"
-                onClick={onClose}
-                className="absolute top-4 right-4 z-[110] flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-colors"
-                aria-label="Close preview"
-            >
-                <FaTimes className="text-xl" />
-            </button>
-
-            <motion.div
-                initial={{ scale: 0.92, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.92, opacity: 0 }}
-                transition={{ duration: 0.25, ease: "easeOut" }}
-                className="relative w-full max-w-5xl h-[70vh] max-h-[85vh] rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10"
-                onClick={(e: MouseEvent<HTMLDivElement>) => e.stopPropagation()}
-            >
-                <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 768px) 95vw, 80vw"
-                    className="object-contain bg-gray-950"
-                    priority
-                />
-            </motion.div>
-
-            <p className="absolute bottom-5 left-1/2 -translate-x-1/2 text-sm md:text-base text-white/90 font-medium pointer-events-none">
-                {project.title}
-            </p>
-        </motion.div>
-    );
-};
 
 // --- Toast Component (Simple & Lightweight) ---
 const Toast = ({ message, show }: { message: string, show: boolean }) => {
@@ -148,21 +80,16 @@ const getTechIcon = (tech: string) => {
     return iconMap[tech] || <FaCode className="text-gray-400" />;
 };
 
-// Status colors
-const statusColors: Record<ProjectStatus, string> = {
-    "Completed": "bg-green-500",
-    "In Progress": "bg-yellow-500",
-    "Planning Phase": "bg-blue-500"
-};
-
-// Projects Page component
 export default function ProjectsPage() {
     const [filter, setFilter] = useState<"all" | "featured" | ProjectStatus>("all");
     const [toastMessage, setToastMessage] = useState("");
     const [showToast, setShowToast] = useState(false);
-    const [previewProject, setPreviewProject] = useState<Project | null>(null);
+    const [previewImage, setPreviewImage] = useState<LightboxImage | null>(null);
 
-    const closePreview = useCallback(() => setPreviewProject(null), []);
+    const closePreview = useCallback(() => setPreviewImage(null), []);
+
+    const openProjectPreview = (project: Project) =>
+        setPreviewImage({ src: project.image, alt: project.title, caption: project.title });
 
     const filteredProjects = filter === "all"
         ? projects
@@ -209,8 +136,8 @@ export default function ProjectsPage() {
             <Toast message={toastMessage} show={showToast} />
 
             <AnimatePresence>
-                {previewProject && (
-                    <ImageLightbox project={previewProject} onClose={closePreview} />
+                {previewImage && (
+                    <ProjectImageLightbox image={previewImage} onClose={closePreview} />
                 )}
             </AnimatePresence>
 
@@ -279,8 +206,8 @@ export default function ProjectsPage() {
                     ))}
                 </div>
 
-                {/* Projects Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
+                {/* Projects Grid — equal-width columns, uniform card heights */}
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 items-stretch w-full">
                     {filteredProjects.map((project, index) => (
                         <motion.div
                             key={project.id}
@@ -289,37 +216,18 @@ export default function ProjectsPage() {
                             viewport={{once: true, amount: 0.3}}
                             transition={{duration: 0.5, delay: index * 0.15}}
                             whileHover={{y: -5}}
-                            className={`group animate__animated h-full w-full ${getAnimationClass(index)}`}
+                            className={`group animate__animated h-full w-full min-w-0 ${getAnimationClass(index)}`}
                             style={{ animationDelay: `${index * 0.2}s` }}
                         >
                             <Card
-                                className="overflow-hidden bg-white border-gray-200 w-full h-full flex flex-col shadow-md transition-all duration-300 group-hover:shadow-xl group-hover:shadow-blue-500/20"
+                                className="overflow-hidden bg-white border-gray-200 w-full h-full min-h-[480px] flex flex-col shadow-md transition-all duration-300 group-hover:shadow-xl group-hover:shadow-blue-500/20"
                             >
-                                {/* Image Section — fixed 16:10 aspect ratio for uniform thumbnails */}
-                                <button
-                                    type="button"
-                                    onClick={() => setPreviewProject(project)}
-                                    className="relative w-full aspect-[16/10] shrink-0 overflow-hidden text-left cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                                    aria-label={`View larger screenshot of ${project.title}`}
-                                >
-                                    <div
-                                        className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-10 pointer-events-none"
-                                    ></div>
-                                    <div className="absolute top-3 md:top-4 right-3 md:right-4 z-20 pointer-events-none">
-                                        <span
-                                            className={`px-2 py-1 md:px-3 md:py-1 rounded-full text-xs font-semibold ${statusColors[project.status]}`}
-                                        >
-                                            {project.status}
-                                        </span>
-                                    </div>
-                                    <Image
-                                        src={project.image}
-                                        alt={project.title}
-                                        fill
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                                    />
-                                </button>
+                                <ProjectThumbnail
+                                    src={project.image}
+                                    alt={project.title}
+                                    status={project.status}
+                                    onClick={() => openProjectPreview(project)}
+                                />
 
                                 {/* Content */}
                                 <CardContent className="p-4 md:p-5 flex-1 flex flex-col space-y-2 md:space-y-3">
@@ -333,7 +241,7 @@ export default function ProjectsPage() {
                                     </div>
 
                                     {/* Description with line clamp */}
-                                    <p className="text-black text-sm md:text-base mb-2 md:mb-3 flex-1 line-clamp-3">
+                                    <p className="text-black text-sm md:text-base mb-2 md:mb-3 flex-1 line-clamp-3 min-h-[4.5rem]">
                                         {project.description}
                                     </p>
 

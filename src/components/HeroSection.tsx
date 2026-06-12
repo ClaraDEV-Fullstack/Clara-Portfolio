@@ -61,18 +61,28 @@ export default function HeroSection() {
 
             <div className="relative z-10 w-full h-full">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12 py-8 md:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-                    {/* Left Side - Image */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.7 }}
-                        className="w-full md:w-2/5 flex justify-center md:justify-start"
-                    >
+                    {/* Left Side — portrait pop-in on load */}
+                    <div className="w-full md:w-2/5 flex justify-center md:justify-start">
                         <div className="relative w-full max-w-[300px] sm:max-w-[340px] md:max-w-none">
-                            {/* Magical glow effect */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur-xl transform scale-110"></div>
-                            {/* Portrait frame — 3:4 ratio, capped height for consistent fit */}
-                            <div className="relative w-full aspect-[3/4] max-h-[380px] sm:max-h-[420px] md:max-h-[500px] lg:max-h-[540px] rounded-2xl overflow-hidden shadow-2xl border-2 border-white/10 bg-gray-900">
+                            {/* Magical glow — fades in with portrait */}
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.7 }}
+                                animate={{ opacity: 1, scale: 1.1 }}
+                                transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                                className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur-xl"
+                            />
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.72, y: 24 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 260,
+                                    damping: 20,
+                                    mass: 0.9,
+                                    delay: 0.1,
+                                }}
+                                className="relative w-full aspect-[3/4] max-h-[380px] sm:max-h-[420px] md:max-h-[500px] lg:max-h-[540px] rounded-2xl overflow-hidden shadow-2xl border-2 border-white/10 bg-gray-900"
+                            >
                                 <Image
                                     src="/images/hero-clara.png"
                                     alt="Clara Beri — Full-Stack Developer"
@@ -89,13 +99,22 @@ export default function HeroSection() {
                                 <div className="absolute -top-4 md:-top-6 -right-4 md:-right-6 w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-yellow-400/30 to-yellow-600/30 rounded-full blur-xl animate-bounce"></div>
                                 <div className="absolute -bottom-4 md:-bottom-6 -left-4 md:-left-6 w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-blue-400/30 to-blue-600/30 rounded-full blur-xl animate-bounce" style={{ animationDelay: '1s' }}></div>
 
-                                {/* Corner accents */}
-                                <div className="absolute top-4 left-4 w-6 h-6 md:w-8 md:h-8 border-t-2 border-l-2 border-yellow-400/50 rounded-tl-lg"></div>
-                                <div className="absolute bottom-4 right-4 w-6 h-6 md:w-8 md:h-8 border-b-2 border-r-2 border-yellow-400/50 rounded-br-lg"></div>
-                            </div>
-
+                                {/* Corner accents — pop in slightly after portrait */}
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 0.45, type: "spring", stiffness: 400, damping: 18 }}
+                                    className="absolute top-4 left-4 w-6 h-6 md:w-8 md:h-8 border-t-2 border-l-2 border-yellow-400/50 rounded-tl-lg"
+                                />
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 0.55, type: "spring", stiffness: 400, damping: 18 }}
+                                    className="absolute bottom-4 right-4 w-6 h-6 md:w-8 md:h-8 border-b-2 border-r-2 border-yellow-400/50 rounded-br-lg"
+                                />
+                            </motion.div>
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Right Side - Content */}
                     <motion.div

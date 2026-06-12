@@ -10,6 +10,8 @@ export interface Project {
     githubUrl: string;
     status: ProjectStatus;
     featured?: boolean;
+    /** When false, project appears on /projects only — not on the home “My Works” section. */
+    showOnHome?: boolean;
     isPrivate?: boolean;
     caseStudyAnchor?: string;
 }
@@ -95,6 +97,7 @@ export const projects: Project[] = [
         githubUrl: "",
         status: "Completed",
         featured: true,
+        showOnHome: false,
         isPrivate: true,
         caseStudyAnchor: "vyralo-koryxtech",
     },
@@ -109,6 +112,7 @@ export const projects: Project[] = [
         githubUrl: "https://github.com/ClaraDEV-Fullstack/Clara-Portfolio",
         status: "Completed",
         featured: true,
+        showOnHome: false,
     },
 ];
 
@@ -138,12 +142,6 @@ export const vyraloApiScreenshots: ScreenshotGroup[] = [
     { src: "/images/vyralo/desktop-13-api-overview.png", label: "Laravel backend — SMM supplier API & admin sync" },
     { src: "/images/vyralo/desktop-14-api-endpoints.png", label: "Payments, webhooks, cron jobs & order automation" },
 ];
-
-/** Completed projects for the home page “My Works” section (optional limit). */
-export const getFeaturedCompletedProjects = (limit?: number): Project[] => {
-    const completed = projects.filter((project) => project.status === "Completed");
-    return limit ? completed.slice(0, limit) : completed;
-};
 
 export const vyraloDesktopScreenshots: ScreenshotGroup[] = [
     { src: "/images/vyralo/desktop-01-home.png", label: "Landing page" },
@@ -199,3 +197,11 @@ export const vyraloMobileScreenshots: ScreenshotGroup[] = [
     { src: "/images/vyralo/mobile-07-notifications.png", label: "Notifications" },
     { src: "/images/vyralo/mobile-08-auth.png", label: "Sign-in (mobile)" },
 ];
+
+/** Completed projects for the home page “My Works” section (optional limit). */
+export const getFeaturedCompletedProjects = (limit?: number): Project[] => {
+    const completed = projects.filter(
+        (project) => project.status === "Completed" && project.showOnHome !== false
+    );
+    return limit ? completed.slice(0, limit) : completed;
+};

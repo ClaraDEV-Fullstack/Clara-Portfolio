@@ -1,8 +1,17 @@
 'use client';
 
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { vyraloApiScreenshots, vyraloDesktopScreenshots, vyraloMobileScreenshots } from "@/data/projects";
+import {
+    vyraloApiScreenshots,
+    vyraloDesktopScreenshots,
+    vyraloMobileScreenshots,
+} from "@/data/projects";
+import CaseStudyScreenshotGallery from "@/components/projects/ScreenshotGallery";
+
+const VYRALO_USER_SHOTS = (vyraloDesktopScreenshots ?? []).slice(0, 6);
+const VYRALO_ADMIN_SHOTS = (vyraloDesktopScreenshots ?? []).slice(6);
+const VYRALO_API_SHOTS = vyraloApiScreenshots ?? [];
+const VYRALO_MOBILE_SHOTS = vyraloMobileScreenshots ?? [];
 
 export default function VyraloCaseStudy() {
     return (
@@ -23,60 +32,28 @@ export default function VyraloCaseStudy() {
             </motion.div>
 
             <div className="space-y-12">
-                <ScreenshotGallery title="Desktop — User app" items={vyraloDesktopScreenshots.slice(0, 6)} />
-                <ScreenshotGallery title="Backend — Laravel API surface" items={vyraloApiScreenshots} />
-                <ScreenshotGallery title="Desktop — Admin panel" items={vyraloDesktopScreenshots.slice(6)} />
-                <ScreenshotGallery title="Mobile" items={vyraloMobileScreenshots} compact />
+                <CaseStudyScreenshotGallery
+                    title="Desktop — User app"
+                    items={VYRALO_USER_SHOTS}
+                    accentClass="border-yellow-500"
+                />
+                <CaseStudyScreenshotGallery
+                    title="Backend — Laravel API surface"
+                    items={VYRALO_API_SHOTS}
+                    accentClass="border-yellow-500"
+                />
+                <CaseStudyScreenshotGallery
+                    title="Desktop — Admin panel"
+                    items={VYRALO_ADMIN_SHOTS}
+                    accentClass="border-yellow-500"
+                />
+                <CaseStudyScreenshotGallery
+                    title="Mobile"
+                    items={VYRALO_MOBILE_SHOTS}
+                    compact
+                    accentClass="border-yellow-500"
+                />
             </div>
         </section>
-    );
-}
-
-function ScreenshotGallery({
-    title,
-    items,
-    compact = false,
-}: {
-    title: string;
-    items: { src: string; label: string }[];
-    compact?: boolean;
-}) {
-    return (
-        <div>
-            <h3 className="text-lg md:text-xl font-semibold text-white mb-4 border-l-4 border-yellow-500 pl-3">
-                {title}
-            </h3>
-            <div
-                className={`grid gap-4 ${
-                    compact
-                        ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
-                        : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-                }`}
-            >
-                {items.map((item, index) => (
-                    <motion.figure
-                        key={item.src}
-                        initial={{ opacity: 0, y: 16 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: index * 0.05 }}
-                        className="group rounded-xl overflow-hidden bg-gray-800/50 border border-gray-700/60 hover:border-yellow-500/40 transition-colors"
-                    >
-                        <div className={`relative w-full ${compact ? "aspect-[9/19]" : "aspect-video"} bg-gray-900`}>
-                            <Image
-                                src={item.src}
-                                alt={item.label}
-                                fill
-                                sizes={compact ? "(max-width: 640px) 50vw, 25vw" : "(max-width: 1024px) 50vw, 33vw"}
-                                className="object-cover object-top group-hover:scale-[1.02] transition-transform duration-300"
-                            />
-                        </div>
-                        <figcaption className="px-3 py-2 text-xs md:text-sm text-gray-300 font-medium">
-                            {item.label}
-                        </figcaption>
-                    </motion.figure>
-                ))}
-            </div>
-        </div>
     );
 }

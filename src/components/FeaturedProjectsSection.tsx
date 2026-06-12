@@ -1,14 +1,15 @@
 'use client';
 
-import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from 'react-intersection-observer';
 import 'animate.css';
 import { FaGithub, FaExternalLinkAlt, FaCode, FaDatabase, FaReact, FaPython } from "react-icons/fa";
 import { SiNextdotjs, SiTailwindcss, SiTypescript, SiMysql, SiDjango, SiLaravel, SiDocker } from "react-icons/si";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { getFeaturedCompletedProjects, type Project } from "@/data/projects";
+import ProjectImageLightbox, { type LightboxImage } from "@/components/projects/ProjectImageLightbox";
+import ProjectThumbnail from "@/components/projects/ProjectThumbnail";
 
 const Toast = ({ message, show }: { message: string, show: boolean }) => {
     if (!show) return null;
@@ -49,6 +50,8 @@ export default function FeaturedProjectsSection() {
     const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
     const [toastMessage, setToastMessage] = useState("");
     const [showToast, setShowToast] = useState(false);
+    const [previewImage, setPreviewImage] = useState<LightboxImage | null>(null);
+    const closePreview = useCallback(() => setPreviewImage(null), []);
 
     const showToastMessage = (message: string) => {
         setToastMessage(message);
@@ -75,6 +78,12 @@ export default function FeaturedProjectsSection() {
 
             <Toast message={toastMessage} show={showToast} />
 
+            <AnimatePresence>
+                {previewImage && (
+                    <ProjectImageLightbox image={previewImage} onClose={closePreview} />
+                )}
+            </AnimatePresence>
+
             <div className="max-w-7xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -92,31 +101,31 @@ export default function FeaturedProjectsSection() {
                 {featuredProjects.length === 0 ? (
                     <p className="text-center text-gray-400 text-sm">Completed projects will appear here soon.</p>
                 ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch max-w-5xl mx-auto">
                     {featuredProjects.map((project, index) => (
                         <motion.div
                             key={project.id}
                             initial={{ opacity: 0, y: 30 }}
                             animate={inView ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-blue-500/20 transition-all flex flex-col h-full w-full group"
+                            className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-blue-500/20 transition-all flex flex-col h-full w-full min-w-0 min-h-[480px] group"
                         >
-                            <div className="relative w-full aspect-[16/10] shrink-0 overflow-hidden bg-gray-100">
-                                <span className={`absolute top-3 right-3 z-20 px-3 py-1 rounded-full text-[10px] font-bold text-white ${project.status === 'Completed' ? 'bg-green-500' : 'bg-yellow-500'}`}>
-                                    {project.status}
-                                </span>
-                                <Image
-                                    src={project.image}
-                                    alt={project.title}
-                                    fill
-                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                                    className="object-cover transition-transform group-hover:scale-110"
-                                />
-                            </div>
+                            <ProjectThumbnail
+                                src={project.image}
+                                alt={project.title}
+                                status={project.status}
+                                onClick={() =>
+                                    setPreviewImage({
+                                        src: project.image,
+                                        alt: project.title,
+                                        caption: project.title,
+                                    })
+                                }
+                            />
 
                             <div className="p-5 flex-1 flex flex-col">
                                 <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 min-h-[3.25rem]">{project.title}</h3>
-                                <p className="text-gray-600 text-sm line-clamp-3 mb-4 flex-1">{project.description}</p>
+                                <p className="text-gray-600 text-sm line-clamp-3 mb-4 flex-1 min-h-[4.5rem]">{project.description}</p>
 
                                 <div className="mb-4">
                                     <div className="flex flex-wrap gap-2">
