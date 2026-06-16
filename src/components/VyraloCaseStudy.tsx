@@ -27,7 +27,16 @@ export default function VyraloCaseStudy() {
                 <h2 className="text-2xl md:text-4xl font-bold text-white mb-3">Vyralo @ KoryxTech</h2>
                 <p className="text-gray-400 max-w-3xl mx-auto text-sm md:text-base leading-relaxed">
                     Private client project — full-stack SMM platform with responsive user app and admin panel.
-                    Screenshots captured from production-like staging (desktop &amp; mobile viewports).
+                    Live at{" "}
+                    <a
+                        href="https://vyralo.net/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-yellow-400 hover:underline"
+                    >
+                        vyralo.net
+                    </a>
+                    . Screenshots captured from production-like staging (desktop &amp; mobile viewports).
                 </p>
             </motion.div>
 

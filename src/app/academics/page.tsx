@@ -3,30 +3,16 @@
 import { useState } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Poppins, Montserrat } from 'next/font/google';
-import { FaGraduationCap, FaBriefcase, FaAward, FaCertificate, FaLightbulb, FaUsers, FaChartLine, FaCalendarAlt } from 'react-icons/fa';
+import { FaGraduationCap, FaBriefcase, FaAward, FaCertificate } from 'react-icons/fa';
 import Image from 'next/image';
 import 'animate.css';
+import { careerData, type CareerItem } from '@/data/career';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600', '700'] });
 const montserrat = Montserrat({ subsets: ['latin'], weight: ['600', '700', '800'] });
 
-// Define types for our data structures
-type CareerItem = {
-    year: string;
-    title: string;
-    subtitle: string;
-    description: string;
-    type: string;
-};
-
-type CareerData = {
-    academic: CareerItem[];
-    experience: CareerItem[];
-    training: CareerItem[];
-};
-
 type Section = {
-    id: keyof CareerData;
+    id: keyof typeof careerData;
     title: string;
     icon: JSX.Element;
     color: string;
@@ -101,81 +87,6 @@ export default function CareerPage() {
         },
     };
 
-    // Grouped and sorted career data
-    const careerData: CareerData = {
-        academic: [
-            {
-                year: '2022-2023',
-                title: 'MBA in Logistics and Supply Chain',
-                subtitle: 'IUGET, Bonamoussadi',
-                description: 'Focused on strategic management, logistics optimization, and efficient supply chain systems.',
-                type: 'academic'
-            },
-            {
-                year: '2021',
-                title: 'Bachelor\'s Degree - Management Sciences\'',
-                subtitle:'IUC – Institute Universitaire de la Côte',
-                description: 'Built strong analytical and leadership foundations with emphasis on organizational management.',
-                type: 'academic'
-            },
-            {
-                year: '2019-2020',
-                title: 'HND in Human Resource Management',
-                subtitle: 'IUC – Institute Universitaire de la Côte',
-                description: 'Developed expertise in employee relations, recruitment, and workplace management strategies.',
-                type: 'academic'
-            },
-            {
-                year: '2018',
-                title: 'GCE Advanced Level',
-                subtitle: 'Business Studies',
-                description: 'Completed advanced secondary education with a strong foundation in management and business principles.',
-                type: 'academic'
-            }
-
-            {
-                year: '2024 - 2025',
-                title: 'Full-Stack Web & Mobile Development',
-                subtitle: 'High Tech Vocational Center',
-                description:
-                    'Comprehensive training in full-stack development with practical implementation of AI-enhanced web and mobile apps. Focus areas include REST API integration, user interface optimization, responsive design, and cloud deployment using modern technologies.',
-                type: 'Technical Training & Development'
-            },
-            {
-                year: '2022 - 2023',
-                title: 'Graphic Design & Branding',
-                subtitle: 'Multicolor – Printing & Design Center',
-                description:
-                    'Learned professional graphic design, layout composition, and digital/industrial printing techniques. Gained strong foundations in branding, logo design, and creative digital media production.',
-                type: 'Creative Training'
-            },
-
-
-        ],
-
-        
-        experience: [
-            {
-                year: '2024 - Present',
-                title: 'Full-Stack Web & Mobile Developer (AI-Integrated Projects)',
-                subtitle: 'High Tech Vocational Center',
-                description:
-                    'Gaining hands-on experience in building and deploying scalable full-stack web and mobile applications using modern frameworks such as Django, Flutter, React, and Next.js. Actively integrating AI-based solutions including chatbots, analytics, and intelligent UI systems into real-world projects.',
-                type: 'Professional Training & Real Project Experience'
-            },
-            {
-                year: '2023 - 2024',
-                title: 'Graphic Designer & Assistant Manager',
-                subtitle: 'Awambong Private Company',
-                description:
-                    'Managed creative design projects and digital marketing visuals while assisting in administrative operations, procurement, and client coordination. Strengthened skills in visual storytelling, team collaboration, and brand presentation.',
-                type: 'Work Experience'
-            },
-        
-        ]
-
-    };
-
     // Section configuration
     const sections: Section[] = [
         {
@@ -190,12 +101,6 @@ export default function CareerPage() {
             icon: <FaBriefcase className="text-white text-xl" />,
             color: 'from-green-600 to-green-800'
         },
-        {
-            id: 'training',
-            title: 'Professional Training',
-            icon: <FaCertificate className="text-white text-xl" />,
-            color: 'from-purple-600 to-purple-800'
-        }
     ];
 
     return (

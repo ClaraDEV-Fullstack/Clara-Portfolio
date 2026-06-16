@@ -134,7 +134,7 @@ export default function TestimonialsPage() {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="text-2xl md:text-4xl font-extrabold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-700 bg-clip-text text-transparent mb-1 md:mb-2"
+                    className="text-xl sm:text-2xl md:text-4xl font-extrabold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-700 bg-clip-text text-transparent mb-1 md:mb-2"
                 >
                     What My Clients Say
                 </motion.h1>
@@ -147,30 +147,30 @@ export default function TestimonialsPage() {
             {/* Infinite Carousel - Reduced padding */}
             <div className="relative overflow-hidden py-1 md:py-2 relative z-10">
                 <div
-                    className="carousel-track gap-2 md:gap-4"
+                    className="carousel-track gap-1.5 md:gap-4"
                     ref={carouselRef}
                 >
                     {displayedTestimonials.map((t, idx) => (
                         <div
                             key={idx}
-                            className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl shadow-lg border border-gray-700 flex-shrink-0 w-[35%] md:w-[14%] p-2 md:p-3 flex flex-col cursor-pointer hover:shadow-xl transition-all duration-300 hover:border-yellow-600/30 h-60 md:h-80"
+                            className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-lg md:rounded-xl shadow-lg border border-gray-700 flex-shrink-0 w-[100px] sm:w-[115px] md:w-[14%] p-1.5 md:p-3 flex flex-col cursor-pointer hover:shadow-xl transition-all duration-300 hover:border-yellow-600/30 h-40 sm:h-44 md:h-80"
                             onClick={() => handleCardClick(t)}
                         >
                             {/* Header with rating */}
-                            <div className="flex justify-between items-start mb-1 md:mb-2">
-                                <div className="flex items-center gap-1">
-                                    <div className="text-yellow-600 flex text-xs">
+                            <div className="flex justify-between items-start mb-0.5 md:mb-2">
+                                <div className="flex items-center gap-0.5">
+                                    <div className="text-yellow-600 flex text-[7px] sm:text-[8px] md:text-xs">
                                         {[...Array(5)].map((_, i) => (
-                                            <FaStar key={i} className="text-xs" />
+                                            <FaStar key={i} className="text-[7px] sm:text-[8px] md:text-xs" />
                                         ))}
                                     </div>
                                 </div>
-                                <FaQuoteLeft className="text-yellow-600/30 text-sm md:text-lg" />
+                                <FaQuoteLeft className="text-yellow-600/30 text-[10px] sm:text-xs md:text-lg" />
                             </div>
 
                             {/* Screenshot */}
                             {t.image && (
-                                <div className="relative h-24 md:h-40 w-full mb-1 md:mb-2 rounded-lg overflow-hidden group">
+                                <div className="relative h-14 sm:h-16 md:h-40 w-full mb-0.5 md:mb-2 rounded-md md:rounded-lg overflow-hidden group">
                                     <NextImage
                                         src={t.image}
                                         alt="Screenshot"
@@ -178,39 +178,39 @@ export default function TestimonialsPage() {
                                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                                     />
                                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                        <FaExpand className="text-white text-sm md:text-xl" />
+                                        <FaExpand className="text-white text-[10px] md:text-xl" />
                                     </div>
                                 </div>
                             )}
 
                             {/* Description */}
-                            <div className="flex-grow mb-1 md:mb-2 overflow-hidden">
-                                <div className="bg-gray-700/30 rounded-lg p-1.5 md:p-2 h-12 md:h-16 overflow-hidden">
-                                    <p className="text-gray-200 text-xs break-words">
+                            <div className="flex-grow mb-0.5 md:mb-2 overflow-hidden">
+                                <div className="bg-gray-700/30 rounded-md md:rounded-lg p-1 md:p-2 h-8 sm:h-9 md:h-16 overflow-hidden">
+                                    <p className="text-gray-200 text-[9px] sm:text-[10px] md:text-xs break-words leading-tight">
                                         {t.description.length > 40
                                             ? `${t.description.substring(0, 40)}...`
                                             : t.description}
                                     </p>
                                 </div>
                                 {t.description.length > 40 && (
-                                    <div className="text-yellow-600 text-xs mt-0.5 flex items-center">
-                                        <span className="text-xs">Click to read more</span>
+                                    <div className="text-yellow-600 text-[8px] sm:text-[9px] md:text-xs mt-0.5 flex items-center">
+                                        <span>Read more</span>
                                     </div>
                                 )}
                             </div>
 
                             {/* Footer */}
-                            <div className="flex justify-between items-center text-xs pt-1 md:pt-2 border-t border-gray-600">
-                                <div className="flex items-center gap-1">
-                                    <div className="text-xs">
+                            <div className="flex justify-between items-center text-[8px] sm:text-[9px] md:text-xs pt-0.5 md:pt-2 border-t border-gray-600">
+                                <div className="flex items-center gap-0.5 md:gap-1 min-w-0">
+                                    <div className="text-[8px] sm:text-[9px] md:text-xs shrink-0">
                                         {socialIcons[t.socialSite]}
                                     </div>
-                                    <div>
-                                        <div className="text-white font-medium truncate max-w-[50px] text-xs">{t.clientName}</div>
-                                        <div className="text-gray-400 text-xs truncate max-w-[50px]">{t.socialHandle}</div>
+                                    <div className="min-w-0">
+                                        <div className="text-white font-medium truncate max-w-[36px] sm:max-w-[44px] md:max-w-[50px] text-[8px] sm:text-[9px] md:text-xs">{t.clientName}</div>
+                                        <div className="text-gray-400 text-[7px] sm:text-[8px] md:text-xs truncate max-w-[36px] sm:max-w-[44px] md:max-w-[50px]">{t.socialHandle}</div>
                                     </div>
                                 </div>
-                                <div className="text-gray-400 text-xs">
+                                <div className="text-gray-400 text-[7px] sm:text-[8px] md:text-xs shrink-0 ml-0.5">
                                     {formatTestimonialDate(t.timestamp)}
                                 </div>
                             </div>

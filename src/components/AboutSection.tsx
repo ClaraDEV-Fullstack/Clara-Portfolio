@@ -4,69 +4,13 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import {
     FaGraduationCap,
-    FaBriefcase,
-    FaLaptopCode,
-    FaRocket,
-    FaBrain,
     FaCrown,
-    FaBook
 } from 'react-icons/fa';
+import { getAcademicCredentials, getProfessionalExperience } from '@/data/career';
 
 export default function AboutSection() {
-    const education = [
-        {
-            year: '2022-2023',
-            title: 'MBA in Logistics & Supply Chain',
-            institution: 'IUGET, Bonamoussadi',
-            description: 'Advanced strategic management and systems optimization.'
-        },
-        {
-            year: '2019-2021',
-            title: "Bachelor's in Management Sciences",
-            institution: 'IUC – Institute Universitaire de la Côte',
-            description: 'Focus on organizational leadership and analytical foundations.'
-        }
-    ];
-
-    const experience = [
-        {
-            year: '2025-Present',
-            title: 'Full-Stack Developer Intern',
-            company: 'HighTechLabs',
-            description: 'Developing talent marketplaces (NextSkill-Hub) using Next.js, Django, and PostgreSQL in a professional team environment.',
-            type: 'internship'
-        },
-        {
-            year: '2024-Present',
-            title: 'Software Development Training',
-            institution: 'HiTech Training Center',
-            description: 'Mastering React, Django, Flutter, and Dockerized deployments for production-ready apps.',
-            type: 'training'
-        }
-    ];
-
-    const milestones = [
-        {
-            title: 'Strategic Foundation',
-            text: "My Master's in Logistics & Supply Chain taught me how to optimize complex systems—a skill I now apply to writing efficient, scalable code and managing data flow.",
-            icon: <FaBook className="text-yellow-400" />
-        },
-        {
-            title: 'The Professional Shift',
-            text: 'Starting in administrative and design roles, I realized that technology was the key to solving the business bottlenecks I encountered. I decided to master the tools to build those solutions myself.',
-            icon: <FaBriefcase className="text-yellow-400" />
-        },
-        {
-            title: 'Intensive Technical Growth',
-            text: 'I committed to a rigorous year of full-stack and mobile development training, mastering the MERN and Django stacks, and learning to deploy applications using Docker.',
-            icon: <FaLaptopCode className="text-yellow-400" />
-        },
-        {
-            title: 'Real-World Impact',
-            text: 'As an intern at HighTechLabs, I now collaborate on production-level code, focusing on building intuitive user interfaces and robust API integrations for modern platforms.',
-            icon: <FaRocket className="text-yellow-400" />
-        }
-    ];
+    const education = getAcademicCredentials();
+    const experience = getProfessionalExperience();
 
     return (
         <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
@@ -129,7 +73,7 @@ export default function AboutSection() {
                                             {item.year}
                                         </span>
                                     </div>
-                                    <p className="text-sm text-yellow-500 font-medium mb-2">{item.company || item.institution}</p>
+                                    <p className="text-sm text-yellow-500 font-medium mb-2">{item.subtitle}</p>
                                     <p className="text-sm text-gray-400 leading-relaxed">{item.description}</p>
                                 </div>
                             ))}
@@ -144,7 +88,7 @@ export default function AboutSection() {
                                         <FaGraduationCap className="text-purple-400 text-xl" />
                                         <div>
                                             <p className="text-xs text-white font-bold">{edu.title}</p>
-                                            <p className="text-[10px] text-gray-400">{edu.institution}</p>
+                                            <p className="text-[10px] text-gray-400">{edu.subtitle}</p>
                                         </div>
                                     </div>
                                 ))}
