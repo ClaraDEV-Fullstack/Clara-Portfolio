@@ -2,11 +2,15 @@
 
 import { motion } from "framer-motion";
 import {
+    projects,
     vyraloApiScreenshots,
     vyraloDesktopScreenshots,
     vyraloMobileScreenshots,
 } from "@/data/projects";
 import CaseStudyScreenshotGallery from "@/components/projects/ScreenshotGallery";
+
+const vyraloProject = projects.find((p) => p.caseStudyAnchor === "vyralo-koryxtech");
+const vyraloLiveUrl = vyraloProject?.demoUrl ?? "https://vyralo.net/";
 
 const VYRALO_USER_SHOTS = (vyraloDesktopScreenshots ?? []).slice(0, 6);
 const VYRALO_ADMIN_SHOTS = (vyraloDesktopScreenshots ?? []).slice(6);
@@ -29,7 +33,7 @@ export default function VyraloCaseStudy() {
                     Private client project — full-stack SMM platform with responsive user app and admin panel.
                     Live at{" "}
                     <a
-                        href="https://vyralo.net/"
+                        href={vyraloLiveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-yellow-400 hover:underline"

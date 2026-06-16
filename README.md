@@ -99,12 +99,13 @@ Premium trading ecosystem built for **KoryxTech** — Next.js, FastAPI, PostgreS
 
 Private full-stack SMM growth platform built for **KoryxTech** — Laravel, Inertia.js, React, TypeScript, PostgreSQL, Docker.
 
+- **Live:** [vyralo.net](https://vyralo.net/)
 - **User app:** packages, orders, drip-feed, balance & crypto deposits, referrals
 - **Backend:** Laravel API surface — SMM supplier integration, PossaPay webhooks, cron automation
 - **Admin panel:** analytics, orders queue, transactions ledger
-- **Responsive:** desktop + mobile screenshots in the case study on [/projects](https://claradev.vercel.app/projects#vyralo-koryxtech)
+- **Case study:** [/projects#vyralo-koryxtech](https://claradev.vercel.app/projects#vyralo-koryxtech)
 
-> Source code is private (client project). This repo hosts the portfolio case study only.
+> Source code is private (client project). Portfolio hosts screenshots and live demo link only.
 
 ---
 
