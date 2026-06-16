@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Poppins, Montserrat } from 'next/font/google';
 import { FaGraduationCap, FaBriefcase, FaAward, FaCertificate, FaLightbulb, FaUsers, FaChartLine, FaCalendarAlt } from 'react-icons/fa';
@@ -32,6 +33,13 @@ type Section = {
 };
 
 export default function CareerPage() {
+    const [activeTab, setActiveTab] = useState<'academic' | 'experience'>('academic');
+
+    const scrollToSection = (sectionId: 'academic' | 'experience') => {
+        setActiveTab(sectionId);
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
     const fadeUp: Variants = {
         hidden: { opacity: 0, y: 40 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
@@ -124,7 +132,28 @@ export default function CareerPage() {
                 description: 'Completed advanced secondary education with a strong foundation in management and business principles.',
                 type: 'academic'
             }
+
+            {
+                year: '2024 - 2025',
+                title: 'Full-Stack Web & Mobile Development',
+                subtitle: 'High Tech Vocational Center',
+                description:
+                    'Comprehensive training in full-stack development with practical implementation of AI-enhanced web and mobile apps. Focus areas include REST API integration, user interface optimization, responsive design, and cloud deployment using modern technologies.',
+                type: 'Technical Training & Development'
+            },
+            {
+                year: '2022 - 2023',
+                title: 'Graphic Design & Branding',
+                subtitle: 'Multicolor – Printing & Design Center',
+                description:
+                    'Learned professional graphic design, layout composition, and digital/industrial printing techniques. Gained strong foundations in branding, logo design, and creative digital media production.',
+                type: 'Creative Training'
+            },
+
+
         ],
+
+        
         experience: [
             {
                 year: '2024 - Present',
@@ -142,25 +171,7 @@ export default function CareerPage() {
                     'Managed creative design projects and digital marketing visuals while assisting in administrative operations, procurement, and client coordination. Strengthened skills in visual storytelling, team collaboration, and brand presentation.',
                 type: 'Work Experience'
             },
-        ],
-
-        training: [
-            {
-                year: '2024 - 2025',
-                title: 'Full-Stack Web & Mobile Development',
-                subtitle: 'High Tech Vocational Center',
-                description:
-                    'Comprehensive training in full-stack development with practical implementation of AI-enhanced web and mobile apps. Focus areas include REST API integration, user interface optimization, responsive design, and cloud deployment using modern technologies.',
-                type: 'Technical Training & Development'
-            },
-            {
-                year: '2022 - 2023',
-                title: 'Graphic Design & Branding',
-                subtitle: 'Multicolor – Printing & Design Center',
-                description:
-                    'Learned professional graphic design, layout composition, and digital/industrial printing techniques. Gained strong foundations in branding, logo design, and creative digital media production.',
-                type: 'Creative Training'
-            },
+        
         ]
 
     };
@@ -217,6 +228,36 @@ export default function CareerPage() {
                 <motion.p className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto font-medium px-2" variants={textVariants}>
                     My path through education, professional experience, and continuous skill development
                 </motion.p>
+
+                <motion.div
+                    className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mt-6 md:mt-8 px-2"
+                    variants={textVariants}
+                >
+                    <button
+                        type="button"
+                        onClick={() => scrollToSection('academic')}
+                        className={`flex items-center gap-2 px-4 py-2 md:px-6 md:py-2.5 rounded-lg font-semibold text-sm md:text-base transition-all duration-300 ${
+                            activeTab === 'academic'
+                                ? 'bg-gradient-to-r from-blue-600 to-blue-800 text-white shadow-lg scale-105'
+                                : 'bg-gray-800 text-gray-300 border border-gray-600 hover:border-blue-500 hover:text-white'
+                        }`}
+                    >
+                        <FaGraduationCap />
+                        Academic Background
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => scrollToSection('experience')}
+                        className={`flex items-center gap-2 px-4 py-2 md:px-6 md:py-2.5 rounded-lg font-semibold text-sm md:text-base transition-all duration-300 ${
+                            activeTab === 'experience'
+                                ? 'bg-gradient-to-r from-green-600 to-green-800 text-white shadow-lg scale-105'
+                                : 'bg-gray-800 text-gray-300 border border-gray-600 hover:border-green-500 hover:text-white'
+                        }`}
+                    >
+                        <FaBriefcase />
+                        Professional Experience
+                    </button>
+                </motion.div>
             </motion.div>
 
             <div className="w-[98%] md:w-[95%] mx-auto">
@@ -304,7 +345,8 @@ export default function CareerPage() {
                             {sections.map((section: Section, sectionIndex: number) => (
                                 <motion.div
                                     key={section.id}
-                                    className="mb-8 md:mb-12"
+                                    id={section.id}
+                                    className="mb-8 md:mb-12 scroll-mt-28"
                                     variants={sectionHeaderVariants}
                                     initial="hidden"
                                     whileInView="visible"

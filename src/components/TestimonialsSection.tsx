@@ -21,6 +21,13 @@ const socialIcons: Record<string, JSX.Element> = {
     Behance: <FaBehance className="text-blue-500" />,
 };
 
+const formatTestimonialDate = (isoString: string) =>
+    new Date(isoString).toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+    });
+
 // Static testimonials that all visitors can see
 const staticTestimonials: Testimonial[] = [
     {
@@ -29,7 +36,7 @@ const staticTestimonials: Testimonial[] = [
         socialSite: "LinkedIn",
         description: "Claris delivered a top-notch portfolio website that perfectly showcases my work. The design is clean, professional, and visually stunning. Highly recommended!",
         image: "/images/expense-tracker.jpg",
-        timestamp: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 days ago
+        timestamp: "2026-05-16T12:00:00.000Z",
     },
     {
         clientName: "Mr. Wabo",
@@ -37,7 +44,7 @@ const staticTestimonials: Testimonial[] = [
         socialSite: "WhatsApp",
         description: "The web development project was completed ahead of schedule with exceptional quality. Claris's attention to detail and creativity made a huge difference in our online presence.",
         image: "/images/weather-dashboard.jpg",
-        timestamp: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000).toISOString(), // 60 days ago
+        timestamp: "2026-04-16T12:00:00.000Z",
     },
     {
         clientName: "Julius",
@@ -45,7 +52,7 @@ const staticTestimonials: Testimonial[] = [
         socialSite: "Behance",
         description: "Working with Claris was a pleasure! The UI/UX design enhancements she implemented made my portfolio interactive, modern, and visually engaging.",
         image: "/images/react-django-app.jpg",
-        timestamp: new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString(), // 90 days ago
+        timestamp: "2026-03-17T12:00:00.000Z",
     },
     {
         clientName: "Doris",
@@ -53,7 +60,7 @@ const staticTestimonials: Testimonial[] = [
         socialSite: "WhatsApp",
         description: "Claris brought my ideas to life with creative solutions and responsive design. My portfolio now looks professional across all devices. Fantastic work!",
         image: "/images/portfolio-website.jpg",
-        timestamp: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(), // 15 days ago
+        timestamp: "2026-05-31T12:00:00.000Z",
     },
 ];
 
@@ -204,7 +211,7 @@ export default function TestimonialsPage() {
                                     </div>
                                 </div>
                                 <div className="text-gray-400 text-xs">
-                                    {new Date(t.timestamp).toLocaleDateString()}
+                                    {formatTestimonialDate(t.timestamp)}
                                 </div>
                             </div>
                         </div>
@@ -263,7 +270,7 @@ export default function TestimonialsPage() {
                                         </div>
                                     </div>
                                     <div className="text-gray-400 text-xs">
-                                        {new Date(selectedTestimonial.timestamp).toLocaleDateString()}
+                                        {formatTestimonialDate(selectedTestimonial.timestamp)}
                                     </div>
                                 </div>
 

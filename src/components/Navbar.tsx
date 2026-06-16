@@ -45,7 +45,7 @@ export default function Navbar() {
         { href: '/skills', label: 'Skills', icon: <FaCode className="text-base md:text-lg" />, section: 'skills' },
         { href: '/projects', label: 'Projects', icon: <FaBriefcase className="text-base md:text-lg" />, section: 'projects' },
         { href: '/services', label: 'Services', icon: <FaCode className="text-base md:text-lg" />, section: 'services' },
-        { href: '/academics', label: 'Academics', icon: <FaGraduationCap className="text-base md:text-lg" />, section: 'academics' },
+        { href: '/academics', label: 'More Info', icon: <FaGraduationCap className="text-base md:text-lg" />, section: 'academics' },
         { href: '/testimonials', label: 'Testimonials', icon: <FaComments className="text-base md:text-lg" />, section: 'testimonials' },
         { href: '/contact', label: 'Contact', icon: <FaContact className="text-base md:text-lg" />, section: 'contact' },
     ];
@@ -123,7 +123,7 @@ export default function Navbar() {
                                 >
                                     <Link
                                         href={item.href}
-                                        className={`flex items-center gap-1 px-2 md:px-3 py-1.5 rounded-md text-sm md:text-base font-medium transition-all duration-200 ${
+                                        className={`flex items-center gap-1 px-2 md:px-3 py-1.5 rounded-md text-sm md:text-base font-medium whitespace-nowrap transition-all duration-200 ${
                                             activeSection === item.section
                                                 ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg'
                                                 : 'text-gray-200 hover:text-yellow-400 hover:bg-gray-800'
@@ -196,7 +196,7 @@ export default function Navbar() {
                                 <Link
                                     href={item.href}
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className={`flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium transition ${
+                                    className={`flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium whitespace-nowrap transition ${
                                         activeSection === item.section
                                             ? 'bg-blue-600 text-white'
                                             : 'text-gray-300 hover:bg-gray-800 hover:text-yellow-400'
