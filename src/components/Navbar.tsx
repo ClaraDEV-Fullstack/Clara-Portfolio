@@ -13,7 +13,6 @@ import {
     FaBriefcase,
     FaUser,
     FaGraduationCap,
-    FaComments,
     FaEnvelope as FaContact,
     FaBehance
 } from 'react-icons/fa';
@@ -46,13 +45,12 @@ export default function Navbar() {
         { href: '/projects', label: 'Projects', icon: <FaBriefcase className="text-base md:text-lg" />, section: 'projects' },
         { href: '/services', label: 'Services', icon: <FaCode className="text-base md:text-lg" />, section: 'services' },
         { href: '/academics', label: 'More Info', icon: <FaGraduationCap className="text-base md:text-lg" />, section: 'academics' },
-        { href: '/testimonials', label: 'Testimonials', icon: <FaComments className="text-base md:text-lg" />, section: 'testimonials' },
         { href: '/contact', label: 'Contact', icon: <FaContact className="text-base md:text-lg" />, section: 'contact' },
     ];
 
     const socialLinks = [
         { name: 'GitHub', url: 'https://github.com/ClaraDEV-Fullstack', icon: <FaGithub /> },
-        { name: 'LinkedIn', url: 'https://www.linkedin.com/in/clara-beri-794097217/', icon: <FaLinkedin /> },
+        { name: 'LinkedIn', url: 'https://www.linkedin.com/in/clarisse-berinyuy-794097217/', icon: <FaLinkedin /> },
         { name: 'WhatsApp', url: 'https://wa.me/237683669723', icon: <FaWhatsapp /> },
         { icon: <FaBehance />, url: 'https://behance.net/claraberi' },
     ];
@@ -113,7 +111,7 @@ export default function Navbar() {
                         </motion.div>
 
                         {/* Desktop Navigation */}
-                        <nav className="hidden md:flex items-center gap-0.5">
+                        <nav className="hidden lg:flex items-center gap-0.5">
                             {navItems.map((item, index) => (
                                 <motion.div
                                     key={item.href}
@@ -123,7 +121,7 @@ export default function Navbar() {
                                 >
                                     <Link
                                         href={item.href}
-                                        className={`flex items-center gap-1 px-2 md:px-3 py-1.5 rounded-md text-sm md:text-base font-medium whitespace-nowrap transition-all duration-200 ${
+                                        className={`flex items-center gap-1 px-2 xl:px-3 py-1.5 rounded-md text-sm xl:text-base font-medium whitespace-nowrap transition-all duration-200 ${
                                             activeSection === item.section
                                                 ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg'
                                                 : 'text-gray-200 hover:text-yellow-400 hover:bg-gray-800'
@@ -136,7 +134,7 @@ export default function Navbar() {
                             ))}
                         </nav>
 
-                        <div className="hidden md:flex items-center">
+                        <div className="hidden lg:flex items-center">
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
@@ -145,7 +143,7 @@ export default function Navbar() {
                                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                     <Link
                                         href="/contact"
-                                        className="px-2 md:px-3 py-1.5 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-semibold rounded-md shadow-md hover:shadow-lg transition-all block text-sm"
+                                        className="px-2 md:px-3 py-1.5 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-semibold rounded-md shadow-md hover:shadow-lg transition-all block text-sm whitespace-nowrap"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         Hire Me
@@ -156,7 +154,7 @@ export default function Navbar() {
 
                         {/* Mobile Menu Button */}
                         <motion.button
-                            className="md:hidden p-1 rounded-md bg-gray-800 hover:bg-gray-700 transition-colors"
+                            className="lg:hidden p-1 rounded-md bg-gray-800 hover:bg-gray-700 transition-colors"
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             aria-label="Toggle menu"
                             whileHover={{ scale: 1.1 }}
@@ -180,7 +178,7 @@ export default function Navbar() {
             {/* Mobile Dropdown Menu */}
             {isMobileMenuOpen && (
                 <motion.div
-                    className="md:hidden fixed top-[3rem] sm:top-[3.5rem] md:top-[4.5rem] left-0 right-0 z-40 bg-gray-900/95 border-t border-gray-800/40 shadow-lg"
+                    className="lg:hidden fixed top-[3rem] sm:top-[3.5rem] md:top-[4.5rem] left-0 right-0 z-40 bg-gray-900/95 border-t border-gray-800/40 shadow-lg"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}

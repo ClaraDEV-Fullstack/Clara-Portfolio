@@ -1,11 +1,11 @@
-export type ProjectStatus = "Completed" | "In Progress" | "Planning Phase";
+export type ProjectStatus = "Completed" | "In Progress" | "Ongoing" | "Planning Phase";
 
 export interface Project {
     id: number;
     title: string;
     description: string;
     technologies: string[];
-    image: string;
+    image?: string;
     demoUrl: string;
     githubUrl: string;
     status: ProjectStatus;
@@ -14,6 +14,11 @@ export interface Project {
     showOnHome?: boolean;
     isPrivate?: boolean;
     caseStudyAnchor?: string;
+    category?: string;
+    role?: string;
+    contributions?: string[];
+    approach?: string;
+    patientUrl?: string;
 }
 
 export interface ScreenshotGroup {
@@ -22,6 +27,33 @@ export interface ScreenshotGroup {
 }
 
 export const projects: Project[] = [
+    {
+        id: 7,
+        title: "COA – Clinic Operations Assistant",
+        category: "Healthcare Management Platform",
+        role: "Full-Stack Developer | UI/UX & Workflow Design",
+        description:
+            "COA is a healthcare operations platform designed to support clinical and administrative workflows. The project involves collaborating with doctors, clinicians and healthcare professionals to understand their needs and translate real-world procedures into practical digital workflows.",
+        contributions: [
+            "Collaborate with doctors, clinicians and healthcare professionals to understand clinical procedures, operational challenges and user requirements.",
+            "Translate stakeholder discussions into interface designs, forms, features and digital workflows.",
+            "Contribute to the redesign of surgery and pharmacy modules based on feedback and testing of the initial product.",
+            "Work on the digital surgical consent workflow, supporting patient digital signatures or scanned signed-document uploads, with authorised staff review.",
+            "Test and refine workflows with relevant teams as the platform progresses through pre-pilot testing.",
+        ],
+        approach:
+            "Understand user needs → Review existing workflows → Design → Build → Test → Gather feedback → Improve.",
+        technologies: ["Vue.js", "Python", "FastAPI", "MongoDB", "PostgreSQL"],
+        image: "/images/coa/platform-landing.png",
+        demoUrl: "https://coa-platform.com/fr/",
+        patientUrl: "https://patient.coa-platform.com/",
+        githubUrl: "",
+        status: "Ongoing",
+        featured: true,
+        showOnHome: true,
+        isPrivate: false,
+        caseStudyAnchor: "coa-clinic-operations-assistant",
+    },
     {
         id: 6,
         title: "Bet Bot Pro @ KoryxTech",
@@ -184,7 +216,24 @@ export const vyraloMobileScreenshots: ScreenshotGroup[] = [
     { src: "/images/vyralo/mobile-08-auth.png", label: "Sign-in (mobile)" },
 ];
 
-/** Completed projects for the home page “My Works” section (optional limit). */
+export const coaScreenshots: ScreenshotGroup[] = [
+    { src: "/images/coa/platform-landing.png", label: "COA Platform — offline-first patient and facility entry point" },
+    { src: "/images/coa/desktop-01-operations-overview.png", label: "Operations overview — clinical dashboard" },
+    { src: "/images/coa/desktop-02-surgery-dashboard.png", label: "Surgery module — recent cases (patient identifiers redacted)" },
+    { src: "/images/coa/desktop-03-pharmacy-dispensing.png", label: "Pharmacy module — dispensing queue (patient details redacted)" },
+];
+
+/** Projects for the home page “My Works” section, preserving the portfolio display order. */
+export const getHomePageProjects = (limit?: number): Project[] => {
+    const homeProjects = projects.filter(
+        (project) =>
+            project.showOnHome !== false &&
+            (project.status === "Completed" || project.showOnHome === true)
+    );
+    return limit ? homeProjects.slice(0, limit) : homeProjects;
+};
+
+/** Completed projects only — retained for any section that needs completed work exclusively. */
 export const getFeaturedCompletedProjects = (limit?: number): Project[] => {
     const completed = projects.filter(
         (project) => project.status === "Completed" && project.showOnHome !== false

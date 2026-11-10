@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaReact, FaServer, FaMobile, FaArrowRight } from 'react-icons/fa';
+import { FaReact, FaServer, FaMobile, FaArrowRight, FaPalette, FaCogs } from 'react-icons/fa';
 import Link from 'next/link';
 import 'animate.css';
 
@@ -29,6 +29,22 @@ const services = [
         accent: 'from-purple-500/10 to-purple-600/5',
         title: 'Mobile Development',
         description: 'Developing cross-platform mobile apps with native performance',
+    },
+    {
+        icon: FaPalette,
+        iconColor: 'text-pink-600',
+        iconBg: 'bg-pink-50 group-hover:bg-pink-100',
+        accent: 'from-pink-500/10 to-pink-600/5',
+        title: 'UI/UX Design',
+        description: 'Designing intuitive interfaces and user experiences based on user needs and practical workflows.',
+    },
+    {
+        icon: FaCogs,
+        iconColor: 'text-amber-600',
+        iconBg: 'bg-amber-50 group-hover:bg-amber-100',
+        accent: 'from-amber-500/10 to-amber-600/5',
+        title: 'Workflow Analysis & Digital Solutions',
+        description: 'Understanding business and operational processes and translating them into effective digital solutions.',
     },
 ];
 
@@ -65,7 +81,7 @@ export default function CreativeServicesSection() {
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 lg:gap-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-4 md:gap-6 lg:gap-5">
                     {services.map((service, index) => {
                         const Icon = service.icon;
                         return (
@@ -85,7 +101,7 @@ export default function CreativeServicesSection() {
                                         <Icon className={`text-xl sm:text-4xl md:text-5xl ${service.iconColor}`} />
                                     </div>
 
-                                    <h3 className="text-[10px] sm:text-lg md:text-xl font-bold text-gray-800 mb-1 sm:mb-3 leading-tight line-clamp-2">
+                                    <h3 className="text-[10px] sm:text-lg md:text-xl font-bold text-gray-800 mb-1 sm:mb-3 leading-tight line-clamp-3">
                                         {service.title}
                                     </h3>
 

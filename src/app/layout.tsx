@@ -5,35 +5,44 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 
 export const metadata: Metadata = {
-    title: "Clara Beri | AI Full-Stack Web & Mobile Developer | Graphic Designer",
+    title: "Clara Beri | Full-Stack Developer | User Research & UI/UX Design",
     description:
-        "Explore Clara Beri’s portfolio — showcasing creative design, AI-powered applications, and full-stack web and mobile development with modern technologies.",
+        "Portfolio of Clara Beri — a Full-Stack Web & Mobile Developer with 3+ years of experience in user research, UI/UX design, workflow analysis, usability testing and human-centred digital solutions.",
     keywords: [
         "Clara Beri",
-        "AI Developer",
+        "Full-Stack Development",
         "Full Stack Developer",
+        "User Research",
+        "Human-Centred Design",
+        "User Needs Assessment",
+        "Stakeholder Engagement",
+        "UI/UX Design",
+        "User Experience",
+        "Workflow Analysis",
+        "Usability Testing",
+        "Feedback Collection",
+        "Iterative Design",
+        "Participatory Design",
+        "Cross-functional Collaboration",
+        "Digital Innovation",
+        "Problem-Solving",
         "Frontend Developer",
         "Mobile Developer",
-        "UI Designer",
-        "Graphic Designer",
         "Next.js",
         "React",
         "TypeScript",
         "Portfolio",
-        "Chatbot Developer",
-        "AI Integration",
-        "Machine Learning",
-        "LLM Applications",
     ],
     authors: [{ name: "Clara Beri" }],
     viewport: "width=device-width, initial-scale=1",
     robots: "index, follow",
+    metadataBase: new URL("https://claradev.vercel.app"),
 
     // Open Graph for LinkedIn, Facebook, etc.
     openGraph: {
-        title: "Clara Beri | AI Full-Stack Web & Mobile Developer | Graphic Designer",
+        title: "Clara Beri | Full-Stack Developer | User Research & UI/UX Design",
         description:
-            "Explore Clara Beri’s portfolio — showcasing creative design, AI-powered applications, and full-stack web and mobile development with modern technologies.",
+            "Explore Clara Beri’s portfolio — user research, UI/UX design, workflow analysis and full-stack web and mobile development.",
         url: "https://claradev.vercel.app/",
         siteName: "Clara Beri Portfolio",
         type: "website",
@@ -51,9 +60,9 @@ export const metadata: Metadata = {
     // Twitter Card
     twitter: {
         card: "summary_large_image",
-        title: "Clara Beri | AI Full-Stack Web & Mobile Developer | Graphic Designer",
+        title: "Clara Beri | Full-Stack Developer | User Research & UI/UX Design",
         description:
-            "Explore Clara Beri’s portfolio — creative AI-powered web and mobile experiences designed and developed by Clara Beri.",
+            "Clara Beri — Full-Stack Developer combining user research, human-centred design and practical digital solutions.",
         images: ["https://claradev.vercel.app/images/layout.jpg"],
     },
 

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Poppins } from 'next/font/google';
-import { FaReact, FaPython, FaMobileAlt, FaPalette, FaCode, FaServer, FaRobot, FaCheck, FaStar, FaCogs, FaLaptopCode, FaMobile, FaPaintBrush, FaBrain } from 'react-icons/fa';
+import { FaReact, FaPython, FaMobileAlt, FaPalette, FaCode, FaServer, FaRobot, FaCheck, FaStar, FaCogs, FaLaptopCode, FaMobile, FaPaintBrush, FaBrain, FaProjectDiagram } from 'react-icons/fa';
 import { SiNextdotjs, SiDjango, SiFlutter } from 'react-icons/si';
 import dynamic from "next/dynamic";
 import 'animate.css';
@@ -101,6 +101,22 @@ const services = [
         ]
     },
     {
+        title: 'Workflow Analysis & Digital Solutions',
+        icon: <FaProjectDiagram size={28} className="text-blue-400" />,
+        decorativeIcon: <FaCogs className="text-yellow-400/30 text-5xl" />,
+        description: `
+      I map existing operational processes, identify friction points and translate them into practical digital workflows.
+      The goal is to improve usability, consistency and day-to-day efficiency without overcomplicating how people work.
+    `,
+        features: [
+            "User and stakeholder needs assessment",
+            "Existing workflow review and mapping",
+            "Process improvement recommendations",
+            "Digital workflow and form design",
+            "Iterative testing and feedback collection"
+        ]
+    },
+    {
         title: 'AI Integration & Automation',
         icon: <SiDjango size={28} className="text-blue-400" />,
         decorativeIcon: <FaBrain className="text-yellow-400/30 text-5xl" />,
@@ -141,7 +157,7 @@ const ServiceCard = ({ service, index }: { service: any; index: number }) => {
             ref={ref}
             className={`flex flex-col md:flex-row items-center gap-6 md:gap-8 ${
                 index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-            } group relative py-6 md:py-8 ${inView ? 'animate__animated ' + animationClasses[index] : ''}`}
+            } group relative py-6 md:py-8 ${inView ? 'animate__animated ' + animationClasses[index % animationClasses.length] : ''}`}
             style={{ animationDelay: inView ? `${index * 0.3}s` : '0s' }}
             whileHover={{ scale: 1.02 }}
             initial={{ opacity: 0 }}

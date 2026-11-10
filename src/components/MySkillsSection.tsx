@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
-import { FaCode, FaDatabase, FaMobile, FaPalette, FaServer, FaTools } from 'react-icons/fa';
+import { FaCode, FaDatabase, FaMobile, FaPalette, FaServer, FaTools, FaSearch, FaUsers, FaUserCheck, FaProjectDiagram, FaCheckDouble, FaComments, FaSyncAlt, FaPuzzlePiece, FaHandshake } from 'react-icons/fa';
 import { useInView } from 'react-intersection-observer';
 import 'animate.css';
 
@@ -50,6 +50,20 @@ export default function InfiniteSkillsSection() {
         { name: 'Figma', icon: <FaFigma className="text-purple-500" /> },
         { name: 'Photoshop', icon: <SiAdobephotoshop className="text-blue-600" /> },
         { name: 'Illustrator', icon: <SiAdobeillustrator className="text-orange-500" /> },
+    ];
+
+    // Design and research capabilities
+    const designSkills = [
+        { name: 'User Needs Assessment', icon: <FaSearch className="text-amber-300" /> },
+        { name: 'Stakeholder Engagement', icon: <FaUsers className="text-cyan-300" /> },
+        { name: 'User-Centred Design', icon: <FaUserCheck className="text-emerald-300" /> },
+        { name: 'UI/UX Design', icon: <FaPalette className="text-purple-300" /> },
+        { name: 'User Workflow Analysis', icon: <FaProjectDiagram className="text-blue-300" /> },
+        { name: 'Usability Testing', icon: <FaCheckDouble className="text-lime-300" /> },
+        { name: 'Feedback Collection', icon: <FaComments className="text-sky-300" /> },
+        { name: 'Iterative Design', icon: <FaSyncAlt className="text-orange-300" /> },
+        { name: 'Problem-Solving', icon: <FaPuzzlePiece className="text-pink-300" /> },
+        { name: 'Cross-functional Collaboration', icon: <FaHandshake className="text-yellow-300" /> },
     ];
 
     // Duplicate skills for infinite scroll effect
@@ -167,6 +181,46 @@ export default function InfiniteSkillsSection() {
                         })}
                     </div>
                 </div>
+
+                {/* Design & Research Capabilities */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="mt-8 md:mt-10"
+                >
+                    <div className="text-center mb-4">
+                        <h3 className="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 via-blue-600 to-purple-700">
+                            User Research &amp; Design
+                        </h3>
+                        <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full mt-2"></div>
+                        <p className="mt-2 text-sm md:text-base text-blue-950 max-w-2xl mx-auto">
+                            Human-centred capabilities I bring to product discovery, workflow improvement and iterative delivery.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3">
+                        {designSkills.map((skill, index) => (
+                            <motion.div
+                                key={skill.name}
+                                initial={{ opacity: 0, y: 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.35, delay: index * 0.04 }}
+                                whileHover={{ y: -5 }}
+                                className="flex items-center gap-2 p-2.5 sm:p-3 bg-gray-900 rounded-xl border border-gray-800 shadow-md hover:shadow-xl transition-all duration-300 min-w-0"
+                            >
+                                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-base">
+                                    {skill.icon}
+                                </span>
+                                <span className="text-white text-xs sm:text-sm font-semibold leading-snug">
+                                    {skill.name}
+                                </span>
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.div>
 
             </div>
 

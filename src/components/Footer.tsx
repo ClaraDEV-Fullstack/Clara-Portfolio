@@ -24,13 +24,12 @@ export default function Footer() {
         { name: 'Projects', href: '/projects' },
         { name: 'Services', href: '/services' },
         { name: 'Academics', href: '/academics' },
-        { name: 'Testimonials', href: '/testimonials' },
         { name: 'Contact', href: '/contact' },
     ];
 
     const socialLinks = [
         { icon: <FaGithub />, url: 'https://github.com/ClaraDEV-Fullstack' },
-        { icon: <FaLinkedin />, url: 'https://linkedin.com/in/clara-beri-794097217/' },
+        { icon: <FaLinkedin />, url: 'https://www.linkedin.com/in/clarisse-berinyuy-794097217/' },
         { icon: <FaWhatsapp />, url: 'https://wa.me/237683669723' },
         { icon: <FaBehance />, url: 'https://behance.net/claraberi' },
     ];
@@ -177,7 +176,7 @@ export default function Footer() {
                                 {
                                     icon: <FaMapMarkerAlt className="text-yellow-400 text-xs" />,
                                     title: 'Location',
-                                    text: 'Douala, Cameroon',
+                                    text: 'Yaoundé, Cameroon',
                                 },
                             ].map((item, i) => (
                                 <div key={i} className="flex items-start gap-1.5 sm:gap-2 md:gap-3">

@@ -57,9 +57,26 @@ export default function AboutSection() {
                                     Professional Profile
                                 </h2>
                             </div>
-                            <p className="text-gray-300 text-base leading-relaxed">
-                                I bridge the gap between <span className="text-blue-400 font-bold">Business Strategy</span> and <span className="text-yellow-400 font-bold">Technical Execution</span>. With an MBA background and Full-Stack expertise, I build software that doesn't just work—it solves problems.
-                            </p>
+                            <div className="space-y-4 text-gray-300 text-base leading-relaxed">
+                                <p>
+                                    I bridge the gap between <span className="text-blue-400 font-bold">understanding people&apos;s needs</span> and
+                                    <span className="text-yellow-400 font-bold"> building practical digital solutions</span>.
+                                </p>
+                                <p>
+                                    With a background in Management Sciences and Supply Chain &amp; Logistics Management, combined with
+                                    over three years of full-stack development experience, I approach projects by first understanding
+                                    the problem, the people involved and the processes behind it.
+                                </p>
+                                <p>
+                                    I collaborate with clients, stakeholders, healthcare professionals and development teams to gather
+                                    insights, review existing workflows, test solutions and improve user experiences through continuous
+                                    feedback.
+                                </p>
+                                <p>
+                                    My work combines user research, human-centred design, UI/UX, workflow improvement and software
+                                    development to create solutions that address real-world challenges.
+                                </p>
+                            </div>
                         </div>
 
                         {/* Experience Highlights */}
@@ -74,7 +91,7 @@ export default function AboutSection() {
                                         </span>
                                     </div>
                                     <p className="text-sm text-yellow-500 font-medium mb-2">{item.subtitle}</p>
-                                    <p className="text-sm text-gray-400 leading-relaxed">{item.description}</p>
+                                    <p className="text-sm text-gray-400 leading-relaxed whitespace-pre-line">{item.description}</p>
                                 </div>
                             ))}
                         </div>

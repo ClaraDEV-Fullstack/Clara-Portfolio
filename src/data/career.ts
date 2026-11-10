@@ -23,15 +23,15 @@ export const careerData: CareerData = {
         },
         {
             year: '2022',
-            title: 'MBA in Logistics and Supply Chain',
-            subtitle: 'IUGET, Bonamoussadi',
+            title: 'MBA in Logistics and Supply Chain Management',
+            subtitle: 'IUGET University, Douala',
             description: 'Focused on strategic management, logistics optimization, and efficient supply chain systems.',
             type: 'academic',
         },
         {
             year: '2021',
-            title: "Bachelor's Degree - Management Sciences",
-            subtitle: 'IUC – Institute Universitaire de la Côte',
+            title: "Bachelor's Degree in Management Sciences",
+            subtitle: 'IUC, Institute Universitaire de la Côte',
             description: 'Built strong analytical and leadership foundations with emphasis on organizational management.',
             type: 'academic',
         },
@@ -43,15 +43,16 @@ export const careerData: CareerData = {
                 'Learned professional graphic design, layout composition, and digital/industrial printing techniques. Gained strong foundations in branding, logo design, and creative digital media production.',
             type: 'Creative Training',
         },
-        {
-            year: '2019',
-            title: 'HND in Human Resource Management',
-            subtitle: 'IUC – Institute Universitaire de la Côte',
-            description: 'Developed expertise in employee relations, recruitment, and workplace management strategies.',
-            type: 'academic',
-        },
     ],
     experience: [
+        {
+            year: '2026 – Present',
+            title: 'Full-Stack Developer | UI/UX & Workflow Design',
+            subtitle: 'TEDSAI HEALTH CARE · Yaoundé, Cameroon',
+            description:
+                '• Collaborate with doctors, clinicians and healthcare professionals to understand clinical procedures, operational challenges and user requirements.\n• Translate stakeholder needs into functional features, user interfaces, forms and digital workflows for the Clinic Operations Assistant (COA) platform.\n• Contribute to the design, development and improvement of surgery, pharmacy and other clinical modules.\n• Participate in reviewing and redesigning workflows based on stakeholder feedback and testing, improving usability and alignment with real clinical processes.\n• Contribute to the digital surgical consent workflow, supporting patient digital signatures or uploads of scanned signed documents, with authorised staff review.\n• Test and refine application features with relevant teams as the platform progresses through pre-pilot testing.\n\nTechnologies: Vue.js, Python, FastAPI, MongoDB, PostgreSQL.',
+            type: 'Work Experience',
+        },
         {
             year: '2025 - Present',
             title: 'Full-Stack Developer',

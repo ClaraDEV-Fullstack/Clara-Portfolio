@@ -6,9 +6,7 @@ import AboutSection from '@/components/AboutSection';
 import MySkillsSection from '@/components/MySkillsSection';
 import MyServicesSection from '@/components/MyServicesSection';
 import FeaturedProjectsSection from '@/components/FeaturedProjectsSection';
-import ClientTestimonialsSection from '@/components/TestimonialsSection';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 
 export default function Home() {
     return (
@@ -30,9 +28,6 @@ export default function Home() {
 
                 {/* My Services Section */}
                 <MyServicesSection />
-
-                {/* Client Testimonials Section */}
-                <ClientTestimonialsSection />
             </main>
 
         </div>

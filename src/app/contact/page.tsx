@@ -128,7 +128,7 @@ export default function ContactPage() {
                         className="text-center md:text-left space-y-4"
                     >
                         <h3 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-yellow-400 via-orange-300 to-pink-400 bg-clip-text text-transparent drop-shadow-lg">
-                            Let's Connect 🤝
+                            Let&apos;s Connect 🤝
                         </h3>
 
                         <motion.div
@@ -139,8 +139,8 @@ export default function ContactPage() {
                         ></motion.div>
 
                         <p className="text-gray-200 text-lg leading-relaxed max-w-lg">
-                            I'm available for <span className="text-yellow-400 font-semibold">freelance work</span>, full-time roles, or even a friendly chat.
-                            Drop a message below or connect via my socials — let's bring your next idea to life!
+                            I&apos;m available for <span className="text-yellow-400 font-semibold">freelance work</span>, full-time roles, or even a friendly chat.
+                            Drop a message below or connect via my socials — let&apos;s bring your next idea to life!
                         </p>
                     </motion.div>
 
@@ -164,7 +164,7 @@ export default function ContactPage() {
                             </div>
                             <div>
                                 <p className="text-gray-400 text-sm">Location</p>
-                                <p className="text-lg">Douala, Cameroon</p>
+                                <p className="text-lg">Yaoundé, Cameroon</p>
                             </div>
                         </div>
 
@@ -219,7 +219,7 @@ export default function ContactPage() {
                         transition={{ duration: 1.2 }}
                     >
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.123456789!2d9.7000!3d4.0500!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1053c123456789ab%3A0xabcdef1234567890!2sDouala%2C%20Cameroon!5e0!3m2!1sen!2sus!4v1690000000000!5m2!1sen!2sus"
+                            src="https://www.google.com/maps?q=Yaound%C3%A9%2C%20Cameroon&output=embed"
                             width="100%"
                             height="100%"
                             className="border-0"
@@ -250,7 +250,7 @@ export default function ContactPage() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                         >
-                            Thank you for reaching out. I'll get back to you soon!
+                            Thank you for reaching out. I&apos;ll get back to you soon!
                         </motion.div>
                     )}
 

@@ -229,8 +229,8 @@ export default function CareerPage() {
                         >
                             <div className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl p-4 md:p-6 border border-gray-700">
                                 <p className="text-base md:text-lg lg:text-xl text-gray-300 font-medium italic text-center">
-                                    "Education built my foundation; experience shaped my creativity and resilience.
-                                    Together, they form the cornerstone of my professional journey."
+                                    &quot;Education built my foundation; experience shaped my creativity and resilience.
+                                    Together, they form the cornerstone of my professional journey.&quot;
                                 </p>
                             </div>
                         </motion.div>
@@ -317,7 +317,7 @@ export default function CareerPage() {
                                                         <p className="text-amber-700 font-semibold text-base md:text-lg mb-3">
                                                             {item.subtitle}
                                                         </p>
-                                                        <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+                                                        <p className="text-gray-700 text-base md:text-lg leading-relaxed whitespace-pre-line">
                                                             {item.description}
                                                         </p>
                                                     </motion.div>

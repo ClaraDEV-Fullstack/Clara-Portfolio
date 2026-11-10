@@ -10,6 +10,7 @@ import { projects, type Project, type ProjectStatus } from "@/data/projects";
 import BetBotProCaseStudy from "@/components/BetBotProCaseStudy";
 import GodOfMarketCaseStudy from "@/components/GodOfMarketCaseStudy";
 import VyraloCaseStudy from "@/components/VyraloCaseStudy";
+import CoaCaseStudy from "@/components/CoaCaseStudy";
 import ProjectImageLightbox, { type LightboxImage } from "@/components/projects/ProjectImageLightbox";
 import ProjectThumbnail from "@/components/projects/ProjectThumbnail";
 
@@ -88,8 +89,10 @@ export default function ProjectsPage() {
 
     const closePreview = useCallback(() => setPreviewImage(null), []);
 
-    const openProjectPreview = (project: Project) =>
+    const openProjectPreview = (project: Project) => {
+        if (!project.image) return;
         setPreviewImage({ src: project.image, alt: project.title, caption: project.title });
+    };
 
     const filteredProjects = filter === "all"
         ? projects
@@ -193,7 +196,7 @@ export default function ProjectsPage() {
 
                 {/* Filters */}
                 <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8 md:mb-12">
-                    {["all", "featured", "Completed", "In Progress", "Planning Phase"].map((item) => (
+                    {["all", "featured", "Completed", "In Progress", "Ongoing", "Planning Phase"].map((item) => (
                         <button
                             key={item}
                             onClick={() => setFilter(item as "all" | "featured" | ProjectStatus)}
@@ -231,6 +234,11 @@ export default function ProjectsPage() {
 
                                 {/* Content */}
                                 <CardContent className="p-2.5 sm:p-4 md:p-5 flex-1 flex flex-col space-y-1.5 sm:space-y-2 md:space-y-3">
+                                    {project.category && (
+                                        <p className="text-[9px] sm:text-[11px] font-semibold uppercase tracking-wide text-blue-600">
+                                            {project.category}
+                                        </p>
+                                    )}
                                     <div className="flex justify-between items-start gap-1 sm:gap-2 mb-1 md:min-h-[3.5rem]">
                                         <h3 className="text-xs sm:text-lg md:text-xl font-bold text-black line-clamp-2">{project.title}</h3>
                                         {project.featured && (
@@ -324,6 +332,7 @@ export default function ProjectsPage() {
                 <BetBotProCaseStudy />
                 <GodOfMarketCaseStudy />
                 <VyraloCaseStudy />
+                <CoaCaseStudy />
 
                 {/* CTA */}
                 <motion.div className="mt-16 md:mt-20 text-center"
@@ -333,7 +342,7 @@ export default function ProjectsPage() {
                             transition={{duration: 0.7}}>
                     <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">More Projects Coming Soon</h3>
                     <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto mb-6 md:mb-8 px-4">
-                        I'm currently working on several exciting projects including NextSkill-Hub and new AI-powered tools.
+                        I&apos;m currently working on several exciting projects including NextSkill-Hub and new AI-powered tools.
                         Stay tuned!
                     </p>
                     <div

@@ -24,7 +24,6 @@ This website highlights my ability to merge **creativity with technology** to bu
 - **Responsive Design** – Seamlessly adapts to all devices
 - **Interactive Hero Section** – Split-screen layout with hover effects
 - **Skills Display** – Categorized skill sets with icons
-- **Testimonials Carousel** – Animated client testimonials
 - **Service Overview** – Professional services and expertise
 - **Contact Form** – Validated form for direct connection
 - **Smooth Animations** – Powered by Framer Motion
@@ -39,7 +38,7 @@ This website highlights my ability to merge **creativity with technology** to bu
 - **Animations:** Framer Motion
 - **Icons:** React Icons
 - **Fonts:** Poppins & Montserrat
-- **Storage:** LocalStorage (for testimonials)
+- **Storage:** LocalStorage (contact form messages)
 - **Deployment:** Vercel
 
 ---
@@ -54,7 +53,6 @@ Clara-Portfolio/
 │ ├── projects/ # Projects Page
 │ ├── services/ # Services Page
 │ ├── skills/ # Skills Page
-│ ├── testimonials/ # Testimonials Page
 │ ├── globals.css # Global Styles
 │ └── layout.jsx # Root Layout
 ├── components/ # Reusable Components
@@ -111,13 +109,12 @@ Private full-stack SMM growth platform built for **KoryxTech** — Laravel, Iner
 
 ## 📱 Pages Overview
 
-- **Home:** Hero intro, featured projects, services & skills, testimonials
+- **Home:** Hero intro, featured projects, services & skills
 - **About:** Personal journey, timeline, interests
 - **Career:** Academic background, experience, certifications
 - **Projects:** Filterable gallery with tech stacks & links
 - **Services:** Service categories and expertise highlights
-- **Skills:** Technical skills and tools breakdown
-- **Testimonials:** Animated carousel, add testimonials
+- **Skills:** Technical, design and research skills breakdown
 - **Contact:** Form, social icons, location map
 
 ---

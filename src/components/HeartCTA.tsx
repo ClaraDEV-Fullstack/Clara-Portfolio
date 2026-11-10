@@ -117,7 +117,7 @@ export default function HeartCTA() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4, duration: 0.5 }}
                     >
-                        I'm always excited to hear about new projects and opportunities. Whether you
+                        I&apos;m always excited to hear about new projects and opportunities. Whether you
                         have a question or just want to say hi, feel free to reach out!
                     </motion.p>
 

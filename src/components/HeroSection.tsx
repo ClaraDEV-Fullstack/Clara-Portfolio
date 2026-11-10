@@ -43,7 +43,7 @@ export default function HeroSection() {
             </div>
 
             {/* Coding languages design element - moved away from the edge */}
-            <div className="absolute right-4 md:right-8 top-0 bottom-0 w-16 md:w-20 z-10 overflow-hidden">
+            <div className="hidden xl:block absolute right-4 md:right-8 top-0 bottom-0 w-16 md:w-20 z-10 overflow-hidden">
                 <div className="h-full w-full flex flex-col items-center justify-center space-y-1 md:space-y-2 py-8">
                     {codeSnippets.map((snippet, index) => (
                         <motion.div
@@ -132,7 +132,7 @@ export default function HeroSection() {
                         >
                             <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-full blur-md"></div>
                             <span className="relative bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-xs md:text-sm px-2 md:px-3 py-1 rounded-full font-bold shadow-lg">
-            AI Full-Stack Developer
+            Full-Stack Developer | User Research | UI/UX Design
         </span>
                         </motion.div>
 
@@ -143,7 +143,7 @@ export default function HeroSection() {
                             transition={{ duration: 0.7, delay: 0.4 }}
                             className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight"
                         >
-                            Hi, I'm <span className="text-yellow-400 relative inline-block">
+                            Hi, I&apos;m <span className="text-yellow-400 relative inline-block">
             Clara Beri
             <motion.div
                 className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full"
@@ -154,17 +154,26 @@ export default function HeroSection() {
         </span>
                         </motion.h1>
 
-                        <motion.p
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 0.5 }}
-                            className="text-sm md:text-base text-gray-300 leading-relaxed"
+                            className="space-y-2 text-sm md:text-base text-gray-300 leading-relaxed"
                         >
-                            I am a <span className="text-yellow-400 font-bold">Full-Stack Web & Mobile Developer</span>.
-                            I specialize in building <span className="text-yellow-400 font-semibold">production-ready applications </span>
-                            with robust backends and responsive interfaces—focusing on scalable architecture,
-                            secure API design, and seamless user experiences.
-                        </motion.p>
+                            <p>
+                                I am a <span className="text-yellow-400 font-bold">Full-Stack Web &amp; Mobile Developer</span> with
+                                3+ years of experience building digital solutions around real user and business needs.
+                            </p>
+                            <p>
+                                I work with clients, stakeholders and end users to understand their challenges, explore existing
+                                workflows, gather feedback and translate insights into practical digital solutions.
+                            </p>
+                            <p>
+                                My approach combines <span className="text-yellow-400 font-semibold">user research, UI/UX design</span>,
+                                software development and continuous testing to create accessible, functional and meaningful user
+                                experiences.
+                            </p>
+                        </motion.div>
 
                         {/* Magical skills */}
                         <motion.div
@@ -191,7 +200,7 @@ export default function HeroSection() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 0.8 }}
-                            className="flex gap-2 md:gap-3 pt-1 md:pt-2"
+                            className="flex flex-wrap gap-2 md:gap-3 pt-1 md:pt-2"
                         >
                             <motion.a
                                 href="contact"
@@ -224,6 +233,23 @@ export default function HeroSection() {
                                         initial={{ x: 0 }}
                                         animate={{ x: [0, 5, 0] }}
                                         transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
+                                    >→</motion.span>
+                                </span>
+                            </motion.a>
+                            <motion.a
+                                href="skills"
+                                className="px-3 py-1.5 md:px-4 md:py-2 bg-transparent border-2 border-yellow-500 text-yellow-400 font-semibold rounded-lg hover:bg-yellow-500/10 transition-all relative overflow-hidden group text-xs md:text-sm"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                {/* Magical button effect */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <span className="relative z-10 flex items-center gap-1 md:gap-2">
+                                    My Skills
+                                    <motion.span
+                                        initial={{ x: 0 }}
+                                        animate={{ x: [0, 5, 0] }}
+                                        transition={{ duration: 1.5, repeat: Infinity, delay: 0.75 }}
                                     >→</motion.span>
                                 </span>
                             </motion.a>

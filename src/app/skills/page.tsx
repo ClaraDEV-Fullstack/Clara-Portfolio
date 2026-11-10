@@ -13,7 +13,9 @@ const poppins = Poppins({
 import {
     FaJs, FaReact, FaHtml5, FaCss3Alt, FaGitAlt, FaGithub, FaGitlab,
     FaAndroid, FaApple, FaCode, FaServer, FaDocker,
-    FaMobileAlt, FaPalette, FaPencilRuler, FaLaptopCode
+    FaMobileAlt, FaPalette, FaPencilRuler, FaLaptopCode,
+    FaSearch, FaUsers, FaUserCheck, FaProjectDiagram, FaCheckDouble,
+    FaComments, FaSyncAlt, FaPuzzlePiece, FaHandshake
 } from 'react-icons/fa';
 
 import {
@@ -66,6 +68,19 @@ const designTools = [
     { name: "Photoshop", icon: <SiAdobephotoshop className="text-blue-600" /> },
     { name: "Illustrator", icon: <SiAdobeillustrator className="text-orange-500" /> },
     { name: "Canva", icon: <SiCanva className="text-teal-400" /> },
+];
+
+const researchDesignSkills = [
+    { name: "User Needs Assessment", icon: <FaSearch className="text-amber-300" /> },
+    { name: "Stakeholder Engagement", icon: <FaUsers className="text-cyan-300" /> },
+    { name: "User-Centred Design", icon: <FaUserCheck className="text-emerald-300" /> },
+    { name: "UI/UX Design", icon: <FaPalette className="text-purple-300" /> },
+    { name: "User Workflow Analysis", icon: <FaProjectDiagram className="text-blue-300" /> },
+    { name: "Usability Testing", icon: <FaCheckDouble className="text-lime-300" /> },
+    { name: "Feedback Collection", icon: <FaComments className="text-sky-300" /> },
+    { name: "Iterative Design", icon: <FaSyncAlt className="text-orange-300" /> },
+    { name: "Problem-Solving", icon: <FaPuzzlePiece className="text-pink-300" /> },
+    { name: "Cross-functional Collaboration", icon: <FaHandshake className="text-yellow-300" /> },
 ];
 
 const SkillCard = ({ skill, index }: { skill: { name: string, icon: JSX.Element }, index: number }) => {
@@ -126,6 +141,7 @@ export default function SkillsPage() {
                     <SkillCategory title="Mobile Development" skills={mobileSkills} />
                     <SkillCategory title="DevOps & Cloud" skills={devOpsSkills} />
                     <SkillCategory title="Design Suite" skills={designTools} />
+                    <SkillCategory title="User Research & Design" skills={researchDesignSkills} />
 
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}

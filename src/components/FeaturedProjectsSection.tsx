@@ -7,7 +7,7 @@ import 'animate.css';
 import { FaGithub, FaExternalLinkAlt, FaCode, FaDatabase, FaReact, FaPython } from "react-icons/fa";
 import { SiNextdotjs, SiTailwindcss, SiTypescript, SiMysql, SiDjango, SiLaravel, SiDocker } from "react-icons/si";
 import { useState, useCallback } from "react";
-import { getFeaturedCompletedProjects, type Project } from "@/data/projects";
+import { getHomePageProjects, type Project } from "@/data/projects";
 import ProjectImageLightbox, { type LightboxImage } from "@/components/projects/ProjectImageLightbox";
 import ProjectThumbnail from "@/components/projects/ProjectThumbnail";
 
@@ -71,7 +71,7 @@ export default function FeaturedProjectsSection() {
         showToastMessage("Demo is currently being deployed. Check back soon!");
     };
 
-    const featuredProjects = getFeaturedCompletedProjects();
+    const featuredProjects = getHomePageProjects();
 
     return (
         <section ref={ref} className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 to-black relative">
@@ -94,7 +94,9 @@ export default function FeaturedProjectsSection() {
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-700">My Works</h2>
                     <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full mb-4"></div>
                     <p className="text-gray-300 max-w-2xl mx-auto">
-                        {featuredProjects.length} completed full-stack projects — explore case studies and live demos below.
+                        {featuredProjects.length > 0
+                            ? "4 completed projects and 1 ongoing project. Explore how I turn user needs, research and ideas into practical digital solutions."
+                            : "Completed projects will appear here soon."}
                     </p>
                 </motion.div>
 
@@ -115,6 +117,7 @@ export default function FeaturedProjectsSection() {
                                 alt={project.title}
                                 status={project.status}
                                 onClick={() =>
+                                    project.image &&
                                     setPreviewImage({
                                         src: project.image,
                                         alt: project.title,
@@ -124,6 +127,11 @@ export default function FeaturedProjectsSection() {
                             />
 
                             <div className="p-2.5 sm:p-5 flex-1 flex flex-col">
+                                {project.category && (
+                                    <p className="text-[9px] sm:text-[11px] font-semibold uppercase tracking-wide text-blue-600 mb-1">
+                                        {project.category}
+                                    </p>
+                                )}
                                 <h3 className="text-xs sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2 line-clamp-2">{project.title}</h3>
                                 <p className="text-gray-600 text-[11px] sm:text-sm line-clamp-2 sm:line-clamp-3 mb-2 sm:mb-4 flex-1">{project.description}</p>
 
